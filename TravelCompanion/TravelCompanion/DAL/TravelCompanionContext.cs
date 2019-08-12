@@ -18,7 +18,7 @@ namespace TravelCompanion.DAL
         //}
 
         public TravelCompanionContext(DbContextOptions<TravelCompanionContext> options)
-            :base(options)
+            :base(options) 
         {
 
         }
