@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Inzynierka.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Inzynierka.Models.TripAdvert;
 
 namespace Inzynierka
 {
@@ -42,6 +43,8 @@ namespace Inzynierka
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<AppDbContext>();
 
+            services.AddTransient<ITripAdvertRepository, MockTripAdvertRepository>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -70,7 +73,7 @@ namespace Inzynierka
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=TripAdvert}/{action=Index}/{id?}");
             });
         }
     }
