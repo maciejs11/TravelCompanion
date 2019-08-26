@@ -1,9 +1,4 @@
-﻿
-
-
-
-
-@*   --------------------------------------------- *@
+﻿@*   --------------------------------------------- *@
 <!DOCTYPE html>
 <html>
 <head>
@@ -82,3 +77,29 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+
+
+@* ----------------------------------------------------------- *@
+
+@*<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/tripCompanionSite.css" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+
+        <ul class="navbar-nav float-right">
+            <partial name="_LoginPartial" />
+        </ul>
+
+    </nav>
+    <div class="container">
+        @RenderBody()
+    </div>
+</body>
+</html>*@

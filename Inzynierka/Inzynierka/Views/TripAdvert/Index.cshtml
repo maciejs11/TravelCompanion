@@ -1,11 +1,18 @@
 ﻿@model IEnumerable<Inzynierka.Models.TripAdvert.TripAdvert>
 
-@foreach(var tripAdvert in Model)
-{
-<div>
-    <h2>@tripAdvert.Title</h2>
-    <h3>@tripAdvert.AdvertDate</h3>
-    <h3>@tripAdvert.Country</h3>
-    <h3>@tripAdvert.Content</h3>
-</div>
-}
+
+
+    @foreach (var tripAdvert in Model)
+    {<div style="margin-bottom:2%">
+            <div class="card card-body" style="border-radius:20px">
+                <div>
+                    <h4 class="d-inline font-weight-bold ">@tripAdvert.Title</h4>
+                    <p class="d-inline float-right font-weight-light">@tripAdvert.AdvertDate</p>
+
+                </div>
+                <h5 class="font-weight-normal">@tripAdvert.Country</h5>
+
+                <p class=" font-weight-normal">@tripAdvert.Content</p>
+            </div>
+        </div>
+    }
