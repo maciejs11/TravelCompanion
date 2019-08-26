@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Inzynierka.Models.TripAdvert.TripAdvert>
 
 
-
+<div class="col-md-8">
     @foreach (var tripAdvert in Model)
-    {<div style="margin-bottom:2%">
-            <div class="card card-body" style="border-radius:20px">
+    {<div style="margin-bottom:5%">
+            <div class="card card-body">
                 <div>
                     <h4 class="d-inline font-weight-bold ">@tripAdvert.Title</h4>
                     <p class="d-inline float-right font-weight-light">@tripAdvert.AdvertDate</p>
@@ -16,3 +16,4 @@
             </div>
         </div>
     }
+</div>
