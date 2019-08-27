@@ -20,7 +20,7 @@ namespace Inzynierka.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.Title = "Travel Companion";
+            ViewBag.Title = "Ogłoszenia";
             var tripAdverts = _tripAdvertRepository.GetAllTripAdverts().OrderBy(t => t.AdvertDate);
 
 

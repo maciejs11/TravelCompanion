@@ -1,16 +1,17 @@
 ﻿@model IEnumerable<Inzynierka.Models.TripAdvert.TripAdvert>
 
 
+
 <div class="col-md-8">
     @foreach (var tripAdvert in Model)
     {<div style="margin-bottom:5%">
-            <div class="card card-body">
+            <div class="card card-body bg-light ">
                 <div>
                     <h4 class="d-inline font-weight-bold ">@tripAdvert.Title</h4>
                     <p class="d-inline float-right font-weight-light">@tripAdvert.AdvertDate</p>
 
                 </div>
-                <h5 class="font-weight-normal">@tripAdvert.Country</h5>
+                <h5 class="font-weight-normal"> Kraj: @tripAdvert.Country</h5>
 
                 <p class=" font-weight-normal">@tripAdvert.Content</p>
             </div>
