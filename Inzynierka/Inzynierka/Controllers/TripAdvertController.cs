@@ -21,7 +21,7 @@ namespace Inzynierka.Controllers
         public IActionResult Index()
         {
             ViewBag.Title = "Ogłoszenia";
-            var tripAdverts = _tripAdvertRepository.GetAllTripAdverts().OrderBy(t => t.AdvertDate);
+            var tripAdverts = _tripAdvertRepository.GetAllTripAdverts().OrderByDescending(t => t.AdvertDate);
 
 
 

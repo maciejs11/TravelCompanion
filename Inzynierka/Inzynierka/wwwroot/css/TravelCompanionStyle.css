@@ -47,3 +47,25 @@ body {
         margin-left: -15rem;
     }
 }
+
+.navbarStyle {
+    background-color:darkcyan;
+    width: 100%; 
+}
+
+.sidebarStyle {
+    height: 100%;
+}
+
+
+.list-group:hover{
+    background-color: cadetblue;
+}
+    
+.a.list-group-item-action:hover {
+    background-color: cadetblue;
+}
+
+.twitterStyle {
+    overflow: scroll;
+}

@@ -1,20 +1,27 @@
 ﻿@model IEnumerable<Inzynierka.Models.TripAdvert.TripAdvert>
 
 
+<div class="row">
+    <div class="col-md-8">
+        @foreach (var tripAdvert in Model)
+        {<div style="margin-bottom:5%">
+                <div class="card card-body bg-light ">
+                    <div>
+                        <h4 class="d-inline font-weight-bold ">@tripAdvert.Title</h4>
+                        <p class="d-inline float-right font-weight-light">@tripAdvert.AdvertDate</p>
 
-<div class="col-md-8">
-    @foreach (var tripAdvert in Model)
-    {<div style="margin-bottom:5%">
-            <div class="card card-body bg-light ">
-                <div>
-                    <h4 class="d-inline font-weight-bold ">@tripAdvert.Title</h4>
-                    <p class="d-inline float-right font-weight-light">@tripAdvert.AdvertDate</p>
+                    </div>
+                    <h5 class="font-weight-normal"> Kraj: @tripAdvert.Country</h5>
 
+                    <p class=" font-weight-normal">@tripAdvert.Content</p>
                 </div>
-                <h5 class="font-weight-normal"> Kraj: @tripAdvert.Country</h5>
-
-                <p class=" font-weight-normal">@tripAdvert.Content</p>
             </div>
-        </div>
-    }
+        }
+    </div>
+    <div class="col-md-4">
+        <a class="twitter-timeline" data-height="800" href="https://twitter.com/maccit5/lists/podr-uj">National Park Tweets - Curated tweets by TwitterDev</a>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+
 </div>
+
