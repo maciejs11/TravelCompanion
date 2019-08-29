@@ -32,3 +32,5 @@ D:\GitHubDyskD\Inzynierka\Inzynierka\Inzynierka\obj\Debug\netcoreapp2.2\Inzynier
 D:\GitHubDyskD\Inzynierka\Inzynierka\Inzynierka\obj\Debug\netcoreapp2.2\Inzynierka.csproj.CopyComplete
 D:\GitHubDyskD\Inzynierka\Inzynierka\Inzynierka\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout1.g.cshtml.cs
 D:\GitHubDyskD\Inzynierka\Inzynierka\Inzynierka\obj\Debug\netcoreapp2.2\Razor\Views\TripAdvert\Index.g.cshtml.cs
+D:\GitHubDyskD\Inzynierka\Inzynierka\Inzynierka\obj\Debug\netcoreapp2.2\Razor\Views\TripAdvert\AddTripAdvert.g.cshtml.cs
+D:\GitHubDyskD\Inzynierka\Inzynierka\Inzynierka\obj\Debug\netcoreapp2.2\Razor\Views\TripAdvert\AddTripAdvertComplete.g.cshtml.cs

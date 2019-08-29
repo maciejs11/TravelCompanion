@@ -13,11 +13,17 @@ namespace Inzynierka.Models.TripAdvert
         public TripAdvertRepository(AppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
-        }
+        }        
 
         public IEnumerable<TripAdvert> GetAllTripAdverts()
         {
             return _appDbContext.TripAdverts;
+        }
+
+        public void AddTripAdvert(TripAdvert tripAdvert)
+        {
+            _appDbContext.TripAdverts.Add(tripAdvert);
+            _appDbContext.SaveChanges();
         }
     }
 }

@@ -8,5 +8,6 @@ namespace Inzynierka.Models.TripAdvert
     public interface ITripAdvertRepository
     {
         IEnumerable<TripAdvert> GetAllTripAdverts();
+        void AddTripAdvert(TripAdvert tripAdvert);
     }
 }

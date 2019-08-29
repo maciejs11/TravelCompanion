@@ -43,7 +43,7 @@ namespace Inzynierka
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<AppDbContext>();
 
-            services.AddTransient<ITripAdvertRepository, MockTripAdvertRepository>();
+            services.AddTransient<ITripAdvertRepository, TripAdvertRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

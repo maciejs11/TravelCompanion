@@ -23,9 +23,25 @@ namespace Inzynierka.Controllers
             ViewBag.Title = "Ogłoszenia";
             var tripAdverts = _tripAdvertRepository.GetAllTripAdverts().OrderByDescending(t => t.AdvertDate);
 
-
-
             return View(tripAdverts);
         }
+
+        public IActionResult AddTripAdvert()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddTripAdvert(TripAdvert tripAdvert)
+        {
+            _tripAdvertRepository.AddTripAdvert(tripAdvert);
+            return RedirectToAction("AddTripAdvertComplete");
+        }
+
+        public IActionResult AddTripAdvertComplete()
+        {
+            return View();
+        }
+
     }
 }
