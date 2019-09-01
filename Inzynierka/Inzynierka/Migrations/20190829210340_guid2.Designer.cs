@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Inzynierka.Data.Migrations
+namespace Inzynierka.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20190829114013_ChangeKeyType")]
-    partial class ChangeKeyType
+    [Migration("20190829210340_guid2")]
+    partial class guid2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,9 +23,8 @@ namespace Inzynierka.Data.Migrations
 
             modelBuilder.Entity("Inzynierka.Models.TripAdvert.TripAdvert", b =>
                 {
-                    b.Property<int>("TripAdvertID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<Guid>("TripAdvertID")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("AdvertDate");
 

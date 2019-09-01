@@ -21,15 +21,16 @@ namespace Inzynierka.Data.Migrations
 
             modelBuilder.Entity("Inzynierka.Models.TripAdvert.TripAdvert", b =>
                 {
-                    b.Property<int>("TripAdvertID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<Guid>("TripAdvertID")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("AdvertDate");
 
                     b.Property<string>("Content");
 
                     b.Property<string>("Country");
+
+                    b.Property<DateTime>("ExpireDate");
 
                     b.Property<string>("Title");
 

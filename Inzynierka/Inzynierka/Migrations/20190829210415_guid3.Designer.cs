@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Inzynierka.Data.Migrations
+namespace Inzynierka.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20190823130634_AddTripAdvert")]
-    partial class AddTripAdvert
+    [Migration("20190829210415_guid3")]
+    partial class guid3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,6 +31,8 @@ namespace Inzynierka.Data.Migrations
                     b.Property<string>("Content");
 
                     b.Property<string>("Country");
+
+                    b.Property<DateTime>("ExpireDate");
 
                     b.Property<string>("Title");
 
