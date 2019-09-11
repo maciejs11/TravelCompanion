@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Inzynierka.Models.TripAdvert;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -27,13 +28,14 @@ namespace Inzynierka.Controllers
         }
 
        
-
+        [Authorize]
         public IActionResult AddTripAdvert()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult AddTripAdvert(TripAdvert tripAdvert)
         {
             _tripAdvertRepository.AddTripAdvert(tripAdvert);
