@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Inzynierka.Models.ApplicationUsers;
 using Inzynierka.Models.TripAdverts;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -13,10 +15,12 @@ namespace Inzynierka.Controllers
     public class TripAdvertController : Controller
     {
         private readonly ITripAdvertRepository _tripAdvertRepository;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public TripAdvertController(ITripAdvertRepository tripAdvertRepository)
+        public TripAdvertController(ITripAdvertRepository tripAdvertRepository, UserManager<ApplicationUser> userManager)
         {
             _tripAdvertRepository = tripAdvertRepository;
+            _userManager = userManager;
         }
 
         public IActionResult Index()
@@ -40,6 +44,7 @@ namespace Inzynierka.Controllers
         {
             if (ModelState.IsValid)
             {
+                tripAdvert.UserId = _userManager.GetUserId(HttpContext.User);
                 _tripAdvertRepository.AddTripAdvert(tripAdvert);
                 return RedirectToAction("Index");
             }
