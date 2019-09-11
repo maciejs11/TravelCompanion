@@ -38,8 +38,12 @@ namespace Inzynierka.Controllers
         [Authorize]
         public IActionResult AddTripAdvert(TripAdvert tripAdvert)
         {
-            _tripAdvertRepository.AddTripAdvert(tripAdvert);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _tripAdvertRepository.AddTripAdvert(tripAdvert);
+                return RedirectToAction("Index");
+            }
+            return View(tripAdvert);
         }
 
         public IActionResult AddTripAdvertComplete()
