@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Inzynierka.Models.ApplicationUser;
-using Inzynierka.Models.TripAdvert;
+using Inzynierka.Models.TripAdverts;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 

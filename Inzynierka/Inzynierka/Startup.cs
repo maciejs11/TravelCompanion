@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Inzynierka.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Inzynierka.Models.TripAdvert;
+using Inzynierka.Models.TripAdverts;
 using Inzynierka.Models.ApplicationUser;
 
 namespace Inzynierka

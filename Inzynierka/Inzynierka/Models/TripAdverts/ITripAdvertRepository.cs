@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Inzynierka.Models.TripAdvert
+namespace Inzynierka.Models.TripAdverts
 {
     public interface ITripAdvertRepository
     {
