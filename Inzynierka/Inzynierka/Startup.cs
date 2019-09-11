@@ -14,7 +14,7 @@ using Inzynierka.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Inzynierka.Models.TripAdverts;
-using Inzynierka.Models.ApplicationUser;
+using Inzynierka.Models.ApplicationUsers;
 
 namespace Inzynierka
 {

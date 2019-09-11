@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using Inzynierka.Models.ApplicationUser;
+using Inzynierka.Models.ApplicationUsers;
 
 namespace Inzynierka.Areas.Identity.Pages.Account
 {

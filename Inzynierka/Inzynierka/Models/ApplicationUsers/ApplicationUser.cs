@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Inzynierka.Models.ApplicationUser
+namespace Inzynierka.Models.ApplicationUsers
 {
     public class ApplicationUser : IdentityUser
     {
