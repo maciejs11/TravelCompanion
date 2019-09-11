@@ -26,6 +26,8 @@ namespace Inzynierka.Controllers
             return View(tripAdverts);
         }
 
+       
+
         public IActionResult AddTripAdvert()
         {
             return View();
@@ -35,7 +37,7 @@ namespace Inzynierka.Controllers
         public IActionResult AddTripAdvert(TripAdvert tripAdvert)
         {
             _tripAdvertRepository.AddTripAdvert(tripAdvert);
-            return RedirectToAction("AddTripAdvertComplete");
+            return RedirectToAction("Index");
         }
 
         public IActionResult AddTripAdvertComplete()
