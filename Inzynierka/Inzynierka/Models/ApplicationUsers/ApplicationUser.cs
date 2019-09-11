@@ -11,5 +11,7 @@ namespace Inzynierka.Models.ApplicationUsers
     {
         public string About { get; set; }
 
+        public List<TripAdvert> TripAdverts { get; set; }
+
     }
 }
