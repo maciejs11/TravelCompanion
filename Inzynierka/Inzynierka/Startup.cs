@@ -14,6 +14,7 @@ using Inzynierka.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Inzynierka.Models.TripAdvert;
+using Inzynierka.Models.ApplicationUser;
 
 namespace Inzynierka
 {
@@ -39,7 +40,7 @@ namespace Inzynierka
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddIdentity<IdentityUser, IdentityRole>( options => {
+            services.AddIdentity<ApplicationUser, IdentityRole>( options => {
                 options.Password.RequireDigit = false;
                 options.Password.RequiredLength = 4;
                 options.Password.RequireNonAlphanumeric = false;
