@@ -44,7 +44,6 @@ namespace Inzynierka.Controllers
         {
             if (ModelState.IsValid)
             {
-                tripAdvert.UserId = _userManager.GetUserId(HttpContext.User);
                 _tripAdvertRepository.AddTripAdvert(tripAdvert);
                 return RedirectToAction("Index");
             }

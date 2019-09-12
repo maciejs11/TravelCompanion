@@ -37,11 +37,11 @@ namespace Inzynierka.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
-            [EmailAddress]
+            [Required(ErrorMessage = "To pole jest obowiązkowe")]
+            [EmailAddress(ErrorMessage = "Wprowadź poprawny adres email.")]
             public string Email { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "To pole jest obowiązkowe")]
             [DataType(DataType.Password)]
             public string Password { get; set; }
 
@@ -91,7 +91,7 @@ namespace Inzynierka.Areas.Identity.Pages.Account
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "Zły email lub hasło.");
                     return Page();
                 }
             }
