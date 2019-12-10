@@ -6,8 +6,10 @@ using Inzynierka.Models.ApplicationUsers;
 using Inzynierka.Models.TripAdverts;
 using Inzynierka.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -17,11 +19,14 @@ namespace Inzynierka.Controllers
     {
         private readonly ITripAdvertRepository _tripAdvertRepository;
         private readonly UserManager<ApplicationUser> _userManager;
+        public readonly IHttpContextAccessor _httpContextAccessor;
 
-        public TripAdvertController(ITripAdvertRepository tripAdvertRepository, UserManager<ApplicationUser> userManager)
+        public TripAdvertController(ITripAdvertRepository tripAdvertRepository, UserManager<ApplicationUser> userManager, IHttpContextAccessor httpContextAccessor)
         {
             _tripAdvertRepository = tripAdvertRepository;
             _userManager = userManager;
+            _httpContextAccessor = httpContextAccessor;
+
         }
 
         public IActionResult Index()
@@ -48,6 +53,10 @@ namespace Inzynierka.Controllers
         {
             if (ModelState.IsValid)
             {
+                //tripAdvert.UserId = _userManager.GetUserId(HttpContext.User);
+                tripAdvert.UserEmail = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+                tripAdvert.UserId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                
                 _tripAdvertRepository.AddTripAdvert(tripAdvert);
                 return RedirectToAction("Index");
             }

@@ -6,16 +6,18 @@
         <h2>@Model.PageTitle</h2>
         @foreach (var tripAdvert in Model.TripAdverts)
         {<div style="margin-bottom:5%">
-                <div class="card card-body bg-light ">
-                    <div>
-                        <h4 class="d-inline font-weight-bold ">@tripAdvert.Title</h4>
-                        <p class="d-inline float-right font-weight-light">@tripAdvert.AdvertDate</p>
+             <div class="card card-body bg-light ">
+                 <div>
+                     <h4 class="d-inline font-weight-bold ">@tripAdvert.Title</h4>
+                     <p class="d-inline float-right font-weight-light">@tripAdvert.AdvertDate</p>
 
-                    </div>
-                    <h5 class="font-weight-normal"> Kraj: @tripAdvert.Country</h5>
+                 </div>
+                 <h5 class="font-weight-normal"> Kraj: @tripAdvert.Country</h5>
 
-                    <p class=" font-weight-normal">@tripAdvert.Content</p>
-                </div>
+                 <p class=" font-weight-normal">@tripAdvert.Content</p>
+                 <p class="font-weight-normal">@tripAdvert.UserEmail</p>
+                 
+             </div>
             </div>
         }
     </div>
