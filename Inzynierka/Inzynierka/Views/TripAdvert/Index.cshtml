@@ -12,11 +12,17 @@
                      <p class="d-inline float-right font-weight-light">@tripAdvert.AdvertDate</p>
 
                  </div>
-                 <h5 class="font-weight-normal"> Kraj: @tripAdvert.Country</h5>
+                 <div>
+                     <h5 class=" d-inline font-weight-normal"> Kraj: @tripAdvert.Country</h5>
+                     <a asp-controller="UserProfile" asp-action="Index" class="d-inline float-right font-weight-normal">@tripAdvert.UserEmail</a>
+
+                 </div>
+                 
+
 
                  <p class=" font-weight-normal">@tripAdvert.Content</p>
-                 <p class="font-weight-normal">@tripAdvert.UserEmail</p>
-                 
+
+
              </div>
             </div>
         }

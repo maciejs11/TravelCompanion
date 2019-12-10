@@ -41,3 +41,4 @@ D:\GitHubDyskD\Inzynierka\Inzynierka\Inzynierka\obj\Debug\netcoreapp2.2\Razor\Ar
 D:\GitHubDyskD\Inzynierka\Inzynierka\Inzynierka\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.g.cshtml.cs
 D:\GitHubDyskD\Inzynierka\Inzynierka\Inzynierka\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewImports.g.cshtml.cs
 D:\GitHubDyskD\Inzynierka\Inzynierka\Inzynierka\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ForgotPassword.g.cshtml.cs
+D:\GitHubDyskD\Inzynierka\Inzynierka\Inzynierka\obj\Debug\netcoreapp2.2\Razor\Views\UserProfile\Index.g.cshtml.cs
