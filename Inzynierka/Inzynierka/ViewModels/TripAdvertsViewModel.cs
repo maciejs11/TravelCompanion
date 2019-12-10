@@ -9,7 +9,8 @@ namespace Inzynierka.ViewModels
 {
     public class TripAdvertsViewModel
     {
-        public List<TripAdvert> TripAdverts { get; set; }
-        public ApplicationUser ApplicationUser { get; set; }
+        public IEnumerable<TripAdvert> TripAdverts { get; set; }
+        public string PageTitle { get; set; }
+        //public ApplicationUser ApplicationUser { get; set; }
     }
 }

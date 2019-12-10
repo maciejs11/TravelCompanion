@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Inzynierka.Models.ApplicationUsers;
 using Inzynierka.Models.TripAdverts;
+using Inzynierka.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -25,10 +26,13 @@ namespace Inzynierka.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.Title = "Ogłoszenia";
-            var tripAdverts = _tripAdvertRepository.GetAllTripAdverts().OrderByDescending(t => t.AdvertDate);
+            TripAdvertsViewModel tripAdvertsViewModel = new TripAdvertsViewModel();
+            tripAdvertsViewModel.TripAdverts = _tripAdvertRepository.GetAllTripAdverts().OrderByDescending(t => t.AdvertDate);
+            tripAdvertsViewModel.PageTitle = "Ogłoszenia";
+            //ViewBag.PageTitle = "Ogłoszenia";
+            //var tripAdverts = _tripAdvertRepository.GetAllTripAdverts().OrderByDescending(t => t.AdvertDate);
 
-            return View(tripAdverts);
+            return View(tripAdvertsViewModel);
         }
 
        
