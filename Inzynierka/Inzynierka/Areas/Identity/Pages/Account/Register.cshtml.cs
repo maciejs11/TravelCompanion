@@ -55,6 +55,21 @@ namespace Inzynierka.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "Hasła się nie zgadzają.")]
             public string ConfirmPassword { get; set; }
+
+            [Required(ErrorMessage = "To pole jest obowiązkowe")]
+            public string FirstName { get; set; }
+
+            [Required(ErrorMessage = "To pole jest obowiązkowe")]
+            public string LastName { get; set; }
+
+            [Required(ErrorMessage = "To pole jest obowiązkowe")]
+            public int Age { get; set; }
+
+            [Required(ErrorMessage = "To pole jest obowiązkowe")]
+            public string Gender { get; set; }
+
+            public string About { get; set; }
+
         }
 
         public void OnGet(string returnUrl = null)
@@ -67,7 +82,16 @@ namespace Inzynierka.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
+                var user = new ApplicationUser
+                {
+                    UserName = Input.Email,
+                    Email = Input.Email,
+                    FirstName = Input.FirstName,
+                    LastName = Input.LastName,
+                    Age = Input.Age,
+                    About = Input.About,
+                    Gender = Input.Gender
+                };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

@@ -1,34 +1,31 @@
 ﻿@model Inzynierka.Models.TripAdverts.TripAdvert
 
-<div class="col-md-8">
-    <form asp-action="AddTripAdvert" method="post">
-
-
-
-        <div class="form-group">
-            <label asp-for="Title">Tytuł</label>
-            <input asp-for="Title" class="form-control" />
-            <span asp-validation-for="Title" class="text-danger"></span>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="Country">Kraj</label>
-            <input asp-for="Country" class="form-control" />
-            <span asp-validation-for="Country" class="text-danger"></span>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="Content">Treść ogłoszenia</label>
-            <textarea asp-for="Content" class="form-control"></textarea>
-            <span asp-validation-for="Content" class="text-danger"></span>
-        </div>
-
-       
-       
-
+<div class="row">
+    <div class="col-md-8">
+        <h2>Dodaj ogłoszenie</h2>
+        <form asp-action="AddTripAdvert" method="post">
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Dodaj ogłoszenie" />
+                <label asp-for="Title">Tytuł</label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
             </div>
 
-    </form>
+            <div class="form-group">
+                <label asp-for="Country">Kraj</label>
+                <input asp-for="Country" class="form-control" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Content">Treść ogłoszenia</label>
+                <textarea asp-for="Content" class="form-control"></textarea>
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Dodaj ogłoszenie" />
+                </div>
+
+        </form>
+    </div>
 </div>
