@@ -15,5 +15,6 @@ namespace Inzynierka.Data
         {
         }
         public DbSet<TripAdvert> TripAdverts { get; set; }
+        
     }
 }
