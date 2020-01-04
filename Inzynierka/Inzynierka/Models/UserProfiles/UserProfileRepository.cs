@@ -20,10 +20,11 @@ namespace Inzynierka.Models.UserProfiles
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public IEnumerable<ApplicationUser> GetUserProfile()
+        public ApplicationUser GetUserProfile()
         {
             string UserId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return null;
+
+            return _appDbContext.ApplicationUsers.Where(u => u.Id ==UserId).Single();
         }
     }
 }

@@ -8,6 +8,6 @@ namespace Inzynierka.Models.UserProfiles
 {
     public interface IUserProfileRepository
     {
-       IEnumerable<ApplicationUser> GetUserProfile();
+       ApplicationUser GetUserProfile();
     }
 }

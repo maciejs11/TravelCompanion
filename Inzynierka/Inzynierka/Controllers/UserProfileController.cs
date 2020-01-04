@@ -19,8 +19,8 @@ namespace Inzynierka.Controllers
         }
         public IActionResult Index()
         {
-           // var userProfiles = _userProfileRepository.GetUserProfile();
-            return View();
+            var userProfiles = _userProfileRepository.GetUserProfile();
+            return View(userProfiles);
         }
     }
 }
