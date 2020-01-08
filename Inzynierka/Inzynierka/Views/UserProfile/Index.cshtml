@@ -1,6 +1,6 @@
 ﻿@model Inzynierka.Models.ApplicationUsers.ApplicationUser
 
-<p>Profil uzytkownika.</p>
+<h2>Profil użytkownika</h2>
 
 @*@foreach(var userProfile in Model)
 {
@@ -10,10 +10,24 @@
     <p>@userProfile.Email</p>
 </div>
 }*@
-<div>
-    <p>@Model.FirstName</p>
-    <p>@Model.LastName</p>
-    <p>@Model.Email</p>
+
+<div class="col-md-6 card card-body bg-light">
+    <div style="padding:10px">
+        <h4 class="d-inline">Imię i nazwisko: </h4>
+        <h4 class=" d-inline font-weight-normal">@Model.FirstName @Model.LastName</h4>
+    </div>
+    <div style="padding:10px">
+        <h4 class="d-inline">Wiek: </h4>
+        <h4 class="d-inline font-weight-normal">@Model.Age</h4>
+    </div>
+    <div style="padding:10px">
+        <h4 class="d-inline">Płeć: </h4>
+        <h4 class="d-inline font-weight-normal">@Model.Gender</h4>
+    </div>
+    <div style="padding:10px">
+        <h4 class="d-inline">O mnie: </h4>
+        <h4 class="d-inline font-weight-normal">@Model.About</h4>
+    </div>
 </div>
 @{
 }
