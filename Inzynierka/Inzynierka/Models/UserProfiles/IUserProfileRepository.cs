@@ -12,6 +12,8 @@ namespace Inzynierka.Models.UserProfiles
        ApplicationUser GetUserProfile();
        ApplicationUser GetUserProfileByEmail(string email);
        IEnumerable<TripAdvert> GetTripAdvertsByUserId(string email);
-       
+       IEnumerable<TripAdvert> GetMyTripAdverts();
+
+
     }
 }

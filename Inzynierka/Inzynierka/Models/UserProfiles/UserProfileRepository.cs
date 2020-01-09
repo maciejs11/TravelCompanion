@@ -21,10 +21,14 @@ namespace Inzynierka.Models.UserProfiles
             _httpContextAccessor = httpContextAccessor;
         }
 
+       
+
+        
+
+
         public ApplicationUser GetUserProfile()
         {
             string UserId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-
             return _appDbContext.ApplicationUsers.Where(u => u.Id ==UserId).Single();
         }
 
@@ -38,5 +42,13 @@ namespace Inzynierka.Models.UserProfiles
         {
             return _appDbContext.TripAdverts.Where(t => t.UserEmail == email).OrderByDescending(t => t.AdvertDate);
         }
+
+        public IEnumerable<TripAdvert> GetMyTripAdverts()
+        {
+            string UserId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return _appDbContext.TripAdverts.Where(t => t.UserId == UserId).OrderByDescending(t => t.AdvertDate);
+        }
+
+
     }
 }

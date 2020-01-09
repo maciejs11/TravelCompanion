@@ -26,7 +26,7 @@ namespace Inzynierka.Controllers
             if (String.IsNullOrEmpty(id))
             {
                 userProfileViewModel.UserProfiles = _userProfileRepository.GetUserProfile();
-                userProfileViewModel.TripAdverts = _userProfileRepository.GetTripAdvertsByUserId(id);
+                userProfileViewModel.TripAdverts = _userProfileRepository.GetMyTripAdverts();
 
             }
             else
