@@ -17,9 +17,17 @@ namespace Inzynierka.Controllers
         {
             _userProfileRepository = userProfileRepository;
         }
-        public IActionResult Index()
+        public IActionResult Index(String id)
         {
-            var userProfiles = _userProfileRepository.GetUserProfile();
+            Models.ApplicationUsers.ApplicationUser userProfiles;
+            if (String.IsNullOrEmpty(id))
+            {
+                 userProfiles = _userProfileRepository.GetUserProfile();
+            }
+            else
+            {
+                 userProfiles = _userProfileRepository.GetUserProfileByEmail(id);
+            }
             return View(userProfiles);
         }
     }

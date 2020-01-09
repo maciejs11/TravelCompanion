@@ -14,7 +14,13 @@
                 </div>
                 <div>
                     <h5 class=" d-inline font-weight-normal"> Kraj: @tripAdvert.Country</h5>
-                    <a asp-controller="UserProfile" asp-action="Index" class="d-inline float-right font-weight-normal">@tripAdvert.UserEmail</a>
+                    @*<a asp-controller="UserProfile" asp-action="Index" asp-route="" class="d-inline float-right font-weight-normal">@tripAdvert.UserEmail</a>*@
+                   
+                    @if(!String.IsNullOrEmpty(tripAdvert.UserEmail))
+                    { 
+                        @Html.ActionLink(tripAdvert.UserEmail, "Index", "UserProfile", new { id = tripAdvert.UserEmail }, new { @class = "if-inline float-right font-weight-normal" })
+                    }
+                   
 
                 </div>
 

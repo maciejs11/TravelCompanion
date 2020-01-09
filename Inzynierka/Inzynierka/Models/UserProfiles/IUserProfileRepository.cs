@@ -9,5 +9,6 @@ namespace Inzynierka.Models.UserProfiles
     public interface IUserProfileRepository
     {
        ApplicationUser GetUserProfile();
+        ApplicationUser GetUserProfileByEmail(string email);
     }
 }

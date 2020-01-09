@@ -26,5 +26,11 @@ namespace Inzynierka.Models.UserProfiles
 
             return _appDbContext.ApplicationUsers.Where(u => u.Id ==UserId).Single();
         }
+
+        public ApplicationUser GetUserProfileByEmail(String email)
+        {
+
+            return _appDbContext.ApplicationUsers.Where(u => u.Email == email).Single();
+        }
     }
 }
