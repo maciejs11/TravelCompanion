@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Inzynierka.Models.UserProfiles;
 using Microsoft.AspNetCore.Mvc;
+using Inzynierka.Models.TripAdverts;
+using Inzynierka.ViewModels;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -19,16 +21,23 @@ namespace Inzynierka.Controllers
         }
         public IActionResult Index(String id)
         {
-            Models.ApplicationUsers.ApplicationUser userProfiles;
+            UserProfileViewModel userProfileViewModel = new UserProfileViewModel();
+           
             if (String.IsNullOrEmpty(id))
             {
-                 userProfiles = _userProfileRepository.GetUserProfile();
+                userProfileViewModel.UserProfiles = _userProfileRepository.GetUserProfile();
+                userProfileViewModel.TripAdverts = _userProfileRepository.GetTripAdvertsByUserId(id);
+
             }
             else
             {
-                 userProfiles = _userProfileRepository.GetUserProfileByEmail(id);
+                userProfileViewModel.UserProfiles = _userProfileRepository.GetUserProfileByEmail(id);
+                userProfileViewModel.TripAdverts = _userProfileRepository.GetTripAdvertsByUserId(id);
             }
-            return View(userProfiles);
+
+            
+
+            return View(userProfileViewModel);
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Inzynierka.Data;
 using Inzynierka.Models.ApplicationUsers;
+using Inzynierka.Models.TripAdverts;
 using Microsoft.AspNetCore.Http;
 
 namespace Inzynierka.Models.UserProfiles
@@ -27,10 +28,15 @@ namespace Inzynierka.Models.UserProfiles
             return _appDbContext.ApplicationUsers.Where(u => u.Id ==UserId).Single();
         }
 
-        public ApplicationUser GetUserProfileByEmail(String email)
+        public ApplicationUser GetUserProfileByEmail(string email)
         {
 
             return _appDbContext.ApplicationUsers.Where(u => u.Email == email).Single();
+        }
+
+        public IEnumerable<TripAdvert> GetTripAdvertsByUserId(string email)
+        {
+            return _appDbContext.TripAdverts.Where(t => t.UserEmail == email).OrderByDescending(t => t.AdvertDate);
         }
     }
 }

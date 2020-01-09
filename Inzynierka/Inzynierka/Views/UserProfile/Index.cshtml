@@ -1,33 +1,67 @@
-﻿@model Inzynierka.Models.ApplicationUsers.ApplicationUser
+﻿@model Inzynierka.ViewModels.UserProfileViewModel
 
 <h2>Profil użytkownika</h2>
 
 @*@foreach(var userProfile in Model)
-{
-<div>
-    <p>@userProfile.FirstName</p>
-    <p>@userProfile.LastName</p>
-    <p>@userProfile.Email</p>
-</div>
-}*@
+    {
+    <div>
+        <p>@userProfile.FirstName</p>
+        <p>@userProfile.LastName</p>
+        <p>@userProfile.Email</p>
+    </div>
+    }*@
 
 <div class="col-md-6 card card-body bg-light">
     <div style="padding:10px">
         <h4 class="d-inline">Imię i nazwisko: </h4>
-        <h4 class=" d-inline font-weight-normal">@Model.FirstName @Model.LastName</h4>
+        <h4 class=" d-inline font-weight-normal">@Model.UserProfiles.FirstName @Model.UserProfiles.LastName</h4>
     </div>
     <div style="padding:10px">
         <h4 class="d-inline">Wiek: </h4>
-        <h4 class="d-inline font-weight-normal">@Model.Age</h4>
+        <h4 class="d-inline font-weight-normal">@Model.UserProfiles.Age</h4>
     </div>
     <div style="padding:10px">
         <h4 class="d-inline">Płeć: </h4>
-        <h4 class="d-inline font-weight-normal">@Model.Gender</h4>
+        <h4 class="d-inline font-weight-normal">@Model.UserProfiles.Gender</h4>
     </div>
     <div style="padding:10px">
         <h4 class="d-inline">O mnie: </h4>
-        <h4 class="d-inline font-weight-normal">@Model.About</h4>
+        <h4 class="d-inline font-weight-normal">@Model.UserProfiles.About</h4>
     </div>
 </div>
+
+<h3>Ogłoszenia użytkownika</h3>
+@foreach (var tripAdvert in Model.TripAdverts)
+{<div style="margin-bottom:5%">
+        <div class="card card-body bg-light ">
+            <div>
+                <h4 class="d-inline font-weight-bold ">@tripAdvert.Title</h4>
+                <p class="d-inline float-right font-weight-light">@tripAdvert.AdvertDate</p>
+
+            </div>
+            <div>
+                <h5 class=" d-inline font-weight-normal"> Kraj: @tripAdvert.Country</h5>
+                @*<a asp-controller="UserProfile" asp-action="Index" asp-route="" class="d-inline float-right font-weight-normal">@tripAdvert.UserEmail</a>*@
+
+
+
+
+
+                @if (!String.IsNullOrEmpty(tripAdvert.UserEmail))
+                {
+                    @Html.ActionLink(tripAdvert.UserEmail, "Index", "UserProfile", new { id = tripAdvert.UserEmail }, new { @class = "if-inline float-right font-weight-normal" })
+                }
+                else
+                {
+                    <p>tripAdvert.UserEmail</p>
+                }
+
+            </div>
+            <p class=" font-weight-normal">@tripAdvert.Content</p>
+
+
+        </div>
+    </div>
+}
 @{
 }

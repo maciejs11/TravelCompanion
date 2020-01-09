@@ -3,12 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Inzynierka.Models.TripAdverts;
 
 namespace Inzynierka.Models.UserProfiles
 {
     public interface IUserProfileRepository
     {
        ApplicationUser GetUserProfile();
-        ApplicationUser GetUserProfileByEmail(string email);
+       ApplicationUser GetUserProfileByEmail(string email);
+       IEnumerable<TripAdvert> GetTripAdvertsByUserId(string email);
+       
     }
 }
