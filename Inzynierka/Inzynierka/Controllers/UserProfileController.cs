@@ -6,11 +6,13 @@ using Inzynierka.Models.UserProfiles;
 using Microsoft.AspNetCore.Mvc;
 using Inzynierka.Models.TripAdverts;
 using Inzynierka.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Inzynierka.Controllers
 {
+    [Authorize]
     public class UserProfileController : Controller
     {
         private readonly IUserProfileRepository _userProfileRepository;
@@ -22,6 +24,7 @@ namespace Inzynierka.Controllers
         public IActionResult Index(String id)
         {
             UserProfileViewModel userProfileViewModel = new UserProfileViewModel();
+            userProfileViewModel.PageTitle = "Profil użytkownika";
            
             if (String.IsNullOrEmpty(id))
             {

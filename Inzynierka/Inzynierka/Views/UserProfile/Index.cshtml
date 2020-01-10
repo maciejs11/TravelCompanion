@@ -1,6 +1,8 @@
 ﻿@model Inzynierka.ViewModels.UserProfileViewModel
 
-<h2>Profil użytkownika</h2>
+<link href="~/css/TravelCompanionStyle.css" />
+
+<h2>@Model.PageTitle</h2>
 
 @*@foreach(var userProfile in Model)
     {
@@ -11,7 +13,7 @@
     </div>
     }*@
 
-<div class="col-md-6 card card-body bg-light">
+<div class="col-md-6 card card-body backgroundGrayColor">
     <div style="padding:10px">
         <h4 class="d-inline">Imię i nazwisko: </h4>
         <h4 class=" d-inline font-weight-normal">@Model.UserProfiles.FirstName @Model.UserProfiles.LastName</h4>
@@ -26,42 +28,44 @@
     </div>
     <div style="padding:10px">
         <h4 class="d-inline">O mnie: </h4>
-        <h4 class="d-inline font-weight-normal">@Model.UserProfiles.About</h4>
+        <h5 class="d-inline font-weight-normal">@Model.UserProfiles.About</h5>
     </div>
 </div>
 
-<h4 style="padding:10px 0px 10px 0px">Ogłoszenia użytkownika</h4>
-@foreach (var tripAdvert in Model.TripAdverts)
-{<div style="margin-bottom:5%">
-        <div class="card card-body bg-light ">
-            <div>
-                <h4 class="d-inline font-weight-bold ">@tripAdvert.Title</h4>
-                <p class="d-inline float-right font-weight-light">@tripAdvert.AdvertDate</p>
+<h4 style="padding-top:20px">Ogłoszenia użytkownika</h4>
+
+    @foreach (var tripAdvert in Model.TripAdverts)
+    {<div style="margin-bottom:3%" class="row col-md-8">
+            <div class="card card-body backgroundGrayColor ">
+                <div>
+                    <h4 class="d-inline font-weight-bold ">@tripAdvert.Title</h4>
+                    <p class="d-inline float-right font-weight-light">@tripAdvert.AdvertDate</p>
+
+                </div>
+                <div>
+                    <h5 class=" d-inline font-weight-normal"> Kraj: @tripAdvert.Country</h5>
+                    @*<a asp-controller="UserProfile" asp-action="Index" asp-route="" class="d-inline float-right font-weight-normal">@tripAdvert.UserEmail</a>*@
+
+
+
+
+
+                    @if (!String.IsNullOrEmpty(tripAdvert.UserEmail))
+                    {
+                        @Html.ActionLink(tripAdvert.UserEmail, "Index", "UserProfile", new { id = tripAdvert.UserEmail }, new { @class = "if-inline float-right font-weight-normal" })
+                    }
+                    else
+                    {
+                        <p>tripAdvert.UserEmail</p>
+                    }
+
+                </div>
+                <p class=" font-weight-normal">@tripAdvert.Content</p>
+
 
             </div>
-            <div>
-                <h5 class=" d-inline font-weight-normal"> Kraj: @tripAdvert.Country</h5>
-                @*<a asp-controller="UserProfile" asp-action="Index" asp-route="" class="d-inline float-right font-weight-normal">@tripAdvert.UserEmail</a>*@
-
-
-
-
-
-                @if (!String.IsNullOrEmpty(tripAdvert.UserEmail))
-                {
-                    @Html.ActionLink(tripAdvert.UserEmail, "Index", "UserProfile", new { id = tripAdvert.UserEmail }, new { @class = "if-inline float-right font-weight-normal" })
-                }
-                else
-                {
-                    <p>tripAdvert.UserEmail</p>
-                }
-
-            </div>
-            <p class=" font-weight-normal">@tripAdvert.Content</p>
-
-
         </div>
-    </div>
-}
-@{
-}
+    }
+
+    @{
+    }

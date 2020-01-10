@@ -78,6 +78,7 @@ namespace Inzynierka
             app.UseCookiePolicy();
 
             app.UseAuthentication();
+           
 
             app.UseMvc(routes =>
             {

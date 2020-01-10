@@ -1,12 +1,12 @@
 ﻿@model Inzynierka.ViewModels.TripAdvertsViewModel
 
-
+<link href="~/css/TravelCompanionStyle.css" />
 <div class="row">
 <div class="col-md-8">
     <h2>@Model.PageTitle</h2>
     @foreach (var tripAdvert in Model.TripAdverts)
     {<div style="margin-bottom:5%">
-            <div class="card card-body bg-light ">
+            <div class="card card-body backgroundGrayColor ">
                 <div>
                     <h4 class="d-inline font-weight-bold ">@tripAdvert.Title</h4>
                     <p class="d-inline float-right font-weight-light">@tripAdvert.AdvertDate</p>
@@ -15,19 +15,19 @@
                 <div>
                     <h5 class=" d-inline font-weight-normal"> Kraj: @tripAdvert.Country</h5>
                     @*<a asp-controller="UserProfile" asp-action="Index" asp-route="" class="d-inline float-right font-weight-normal">@tripAdvert.UserEmail</a>*@
-                   
-                   
 
 
 
-                            @if (!String.IsNullOrEmpty(tripAdvert.UserEmail))
-                            {
-                                @Html.ActionLink(tripAdvert.UserEmail, "Index", "UserProfile", new { id = tripAdvert.UserEmail }, new { @class = "if-inline float-right font-weight-normal" })
-                            }    
-                           else{ 
-                                   <p>tripAdvert.UserEmail</p> 
-                                }
+
+
+                    @if (!String.IsNullOrEmpty(tripAdvert.UserEmail))
+                    {
+                        @Html.ActionLink(tripAdvert.UserEmail, "Index", "UserProfile", new { id = tripAdvert.UserEmail }, new { @class = "if-inline float-right font-weight-normal" })
+
+                    }
                     
+
+
                 </div>
                 <p class=" font-weight-normal">@tripAdvert.Content</p>
 

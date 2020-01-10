@@ -60,7 +60,7 @@ body {
 
 .list-group:hover{
     background-color: cadetblue;
-}
+}   
     
 .a.list-group-item-action:hover {
     background-color: cadetblue;
@@ -68,4 +68,8 @@ body {
 
 .twitterStyle {
     overflow: scroll;
+}
+
+.backgroundGrayColor {
+    background-color: rgb(242,242,242);
 }

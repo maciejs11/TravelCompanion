@@ -11,5 +11,6 @@ namespace Inzynierka.ViewModels
     {
         public ApplicationUser UserProfiles { get; set; }
         public IEnumerable<TripAdvert> TripAdverts { get; set; }
+        public string PageTitle { get; set; }
     }
 }
