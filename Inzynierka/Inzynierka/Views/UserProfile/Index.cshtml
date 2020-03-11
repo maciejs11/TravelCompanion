@@ -12,23 +12,29 @@
         <p>@userProfile.Email</p>
     </div>
     }*@
+<div class="row" style="margin-left:auto">
+    <div class="col-md-6 card card-body backgroundGrayColor" >
+        <div style="padding:10px">
+            <h4 class="d-inline">Imię i nazwisko: </h4>
+            <h4 class=" d-inline font-weight-normal">@Model.UserProfiles.FirstName @Model.UserProfiles.LastName</h4>
+        </div>
+        <div style="padding:10px">
+            <h4 class="d-inline">Wiek: </h4>
+            <h4 class="d-inline font-weight-normal">@Model.UserProfiles.Age</h4>
+        </div>
+        <div style="padding:10px">
+            <h4 class="d-inline">Płeć: </h4>
+            <h4 class="d-inline font-weight-normal">@Model.UserProfiles.Gender</h4>
+        </div>
+        <div style="padding:10px">
+            <h4 class="d-inline">O mnie: </h4>
+            <h5 class="d-inline font-weight-normal">@Model.UserProfiles.About</h5>
+        </div>
+    </div>
 
-<div class="col-md-6 card card-body backgroundGrayColor">
-    <div style="padding:10px">
-        <h4 class="d-inline">Imię i nazwisko: </h4>
-        <h4 class=" d-inline font-weight-normal">@Model.UserProfiles.FirstName @Model.UserProfiles.LastName</h4>
-    </div>
-    <div style="padding:10px">
-        <h4 class="d-inline">Wiek: </h4>
-        <h4 class="d-inline font-weight-normal">@Model.UserProfiles.Age</h4>
-    </div>
-    <div style="padding:10px">
-        <h4 class="d-inline">Płeć: </h4>
-        <h4 class="d-inline font-weight-normal">@Model.UserProfiles.Gender</h4>
-    </div>
-    <div style="padding:10px">
-        <h4 class="d-inline">O mnie: </h4>
-        <h5 class="d-inline font-weight-normal">@Model.UserProfiles.About</h5>
+    <div class="col-md-4">
+        @*<h4 style="color:darkcyan">Napisz wiadomość</h4>*@
+        <a asp-controller="Chat" asp-action="Index">Napisz wiadomość</a>
     </div>
 </div>
 
