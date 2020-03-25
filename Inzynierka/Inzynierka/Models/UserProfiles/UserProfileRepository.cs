@@ -34,8 +34,9 @@ namespace Inzynierka.Models.UserProfiles
 
         public ApplicationUser GetUserProfileByEmail(string email)
         {
+            return _appDbContext.ApplicationUsers.Where(u => u.Email == email).FirstOrDefault();
+           
 
-            return _appDbContext.ApplicationUsers.Where(u => u.Email == email).Single();
         }
 
         public IEnumerable<TripAdvert> GetTripAdvertsByUserId(string email)
