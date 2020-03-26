@@ -1,0 +1,75 @@
+﻿@model Inzynierka.ViewModels.UserProfileViewModel
+
+<link href="~/css/TravelCompanionStyle.css" />
+<div class="row" style="margin-left:auto">
+    <h2>@Model.PageTitle</h2>
+</div>
+
+@*@foreach(var userProfile in Model)
+    {
+    <div>
+        <p>@userProfile.FirstName</p>
+        <p>@userProfile.LastName</p>
+        <p>@userProfile.Email</p>
+    </div>
+    }*@
+<div class="row" style="margin-left:auto">
+    <div class="col-md-6 card card-body backgroundGrayColor">
+        <div style="padding:10px">
+            <h4 class="d-inline">Imię i nazwisko: </h4>
+            <h4 class=" d-inline font-weight-normal">@Model.UserProfiles.FirstName @Model.UserProfiles.LastName</h4>
+        </div>
+        <div style="padding:10px">
+            <h4 class="d-inline">Wiek: </h4>
+            <h4 class="d-inline font-weight-normal">@Model.UserProfiles.Age</h4>
+        </div>
+        <div style="padding:10px">
+            <h4 class="d-inline">Płeć: </h4>
+            <h4 class="d-inline font-weight-normal">@Model.UserProfiles.Gender</h4>
+        </div>
+        <div style="padding:10px">
+            <h4 class="d-inline">O mnie: </h4>
+            <h5 class="d-inline font-weight-normal">@Model.UserProfiles.About</h5>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        @*<h4 style="color:darkcyan">Napisz wiadomość</h4>*@
+        <a asp-controller="Chat" asp-action="ChatIndex" class="h4 btn btn-default">Napisz wiadomość</a>
+    </div>
+</div>
+
+<h4 style="padding-top:20px">Ogłoszenia użytkownika</h4>
+
+@foreach (var tripAdvert in Model.TripAdverts)
+{<div style="margin-bottom:3%" class="row col-md-8">
+        <div class="card card-body backgroundGrayColor ">
+            <div>
+                <h4 class="d-inline font-weight-bold ">@tripAdvert.Title</h4>
+                <p class="d-inline float-right font-weight-light">@tripAdvert.AdvertDate</p>
+
+            </div>
+            <div>
+                <h5 class=" d-inline font-weight-normal"> Kraj: @tripAdvert.Country</h5>
+                @*<a asp-controller="UserProfile" asp-action="Index" asp-route="" class="d-inline float-right font-weight-normal">@tripAdvert.UserEmail</a>*@
+
+
+
+
+
+                @if (!String.IsNullOrEmpty(tripAdvert.UserEmail))
+                {
+                    @Html.ActionLink(tripAdvert.UserEmail, "OtherUserProfile", "UserProfile", new { id = tripAdvert.UserEmail }, new { @class = "if-inline float-right font-weight-normal" })
+                }
+                else
+                {
+                    <p>tripAdvert.UserEmail</p>
+                }
+
+            </div>
+            <p class=" font-weight-normal">@tripAdvert.Content</p>
+
+
+        </div>
+    </div>
+}

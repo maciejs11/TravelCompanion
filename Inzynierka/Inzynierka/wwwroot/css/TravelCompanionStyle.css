@@ -49,8 +49,8 @@ body {
 }
 
 .navbarStyle {
-    background-color:darkcyan;
-    width: 100%; 
+    background-color: darkcyan;
+    width: 100%;
 }
 
 .sidebarStyle {
@@ -58,10 +58,10 @@ body {
 }
 
 
-.list-group:hover{
+.list-group:hover {
     background-color: cadetblue;
-}   
-    
+}
+
 .a.list-group-item-action:hover {
     background-color: cadetblue;
 }
@@ -73,3 +73,15 @@ body {
 .backgroundGrayColor {
     background-color: rgb(242,242,242);
 }
+
+.btn-default{
+    background-color:cadetblue;
+    border-color:cadetblue;
+    color: #FFF;
+}
+
+    .btn-default:hover, btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+        background-color: #568f91;
+        border-color: #568f91;
+        color: #FFF;
+    }

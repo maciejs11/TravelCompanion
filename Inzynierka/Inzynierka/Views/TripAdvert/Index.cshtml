@@ -22,7 +22,7 @@
 
                     @if (!String.IsNullOrEmpty(tripAdvert.UserEmail))
                     {
-                        @Html.ActionLink(tripAdvert.UserEmail, "Index", "UserProfile", new { id = tripAdvert.UserEmail }, new { @class = "if-inline float-right font-weight-normal" })
+                        @Html.ActionLink(tripAdvert.UserEmail, "OtherUserProfile", "UserProfile", new { id = tripAdvert.UserEmail }, new { @class = "if-inline float-right font-weight-normal" })
                     }
                     
 

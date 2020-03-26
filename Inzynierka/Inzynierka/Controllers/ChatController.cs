@@ -11,7 +11,7 @@ namespace Inzynierka.Controllers
     public class ChatController : Controller
     {
         // GET: /<controller>/
-        public IActionResult Index()
+        public IActionResult ChatIndex()
         {
             return View();
         }

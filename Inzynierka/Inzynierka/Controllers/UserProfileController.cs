@@ -24,7 +24,7 @@ namespace Inzynierka.Controllers
         public IActionResult Index(String id)
         {
             UserProfileViewModel userProfileViewModel = new UserProfileViewModel();
-            userProfileViewModel.PageTitle = "Profil użytkownika";
+            userProfileViewModel.PageTitle = "Mój profil";
            
             if (String.IsNullOrEmpty(id))
             {
@@ -40,6 +40,17 @@ namespace Inzynierka.Controllers
 
             
 
+            return View(userProfileViewModel);
+        }
+
+        public IActionResult OtherUserProfile(String id)
+        {
+            UserProfileViewModel userProfileViewModel = new UserProfileViewModel();
+            userProfileViewModel.PageTitle = "Profil użytkownika";
+  
+            userProfileViewModel.UserProfiles = _userProfileRepository.GetUserProfileByEmail(id);
+            userProfileViewModel.TripAdverts = _userProfileRepository.GetTripAdvertsByUserId(id);
+           
             return View(userProfileViewModel);
         }
     }
