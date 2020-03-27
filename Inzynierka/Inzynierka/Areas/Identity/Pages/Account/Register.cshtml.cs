@@ -68,7 +68,6 @@ namespace Inzynierka.Areas.Identity.Pages.Account
             [Required(ErrorMessage = "To pole jest obowiązkowe")]
             public string Gender { get; set; }
 
-            [Required(ErrorMessage = "To pole jest obowiązkowe")]
             public string About { get; set; }
 
         }
