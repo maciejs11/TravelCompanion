@@ -44,3 +44,4 @@ D:\GitHubDyskD\Inzynierka\Inzynierka\Inzynierka\obj\Debug\netcoreapp2.2\Razor\Ar
 D:\GitHubDyskD\Inzynierka\Inzynierka\Inzynierka\obj\Debug\netcoreapp2.2\Razor\Views\UserProfile\Index.g.cshtml.cs
 D:\GitHubDyskD\Inzynierka\Inzynierka\Inzynierka\obj\Debug\netcoreapp2.2\Razor\Views\Chat\ChatIndex.g.cshtml.cs
 D:\GitHubDyskD\Inzynierka\Inzynierka\Inzynierka\obj\Debug\netcoreapp2.2\Razor\Views\UserProfile\OtherUserProfile.g.cshtml.cs
+D:\GitHubDyskD\Inzynierka\Inzynierka\Inzynierka\obj\Debug\netcoreapp2.2\Razor\Views\UserProfile\EditUserProfile.g.cshtml.cs

@@ -8,14 +8,6 @@
     </div>
 </div>
 
-@*@foreach(var userProfile in Model)
-    {
-    <div>
-        <p>@userProfile.FirstName</p>
-        <p>@userProfile.LastName</p>
-        <p>@userProfile.Email</p>
-    </div>
-    }*@
 <div class="row" style="margin-left:auto">
     <div class="col-md-6 card card-body backgroundGrayColor" >
         <div style="padding:10px">
@@ -38,7 +30,7 @@
 
 </div>
 
-<h4 style="padding-top:20px">Ogłoszenia użytkownika</h4>
+<h4 style="padding-top:20px">Moje ogłoszenia</h4>
 
     @foreach (var tripAdvert in Model.TripAdverts)
     {<div style="margin-bottom:3%" class="row col-md-8">

@@ -40,7 +40,7 @@ namespace Inzynierka.Controllers
             return View(tripAdvertsViewModel);
         }
 
-       
+        [HttpGet]
         [Authorize]
         public IActionResult AddTripAdvert()
         {
