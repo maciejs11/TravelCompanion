@@ -4,7 +4,7 @@
 <div class="row"  style="margin-left:auto">
     <h2 >@Model.PageTitle</h2>   
     <div class="col-md-1">
-        <a asp-controller="Chat" asp-action="ChatIndex" class="h4 btn btn-default">Edytuj profil</a>
+        <a asp-controller="UserProfile" asp-action="EditUserProfile" asp-route-id="@Model.UserProfiles.Id" class="h4 btn btn-default">Edytuj profil</a>
     </div>
 </div>
 
