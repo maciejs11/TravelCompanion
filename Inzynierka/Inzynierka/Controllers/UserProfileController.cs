@@ -70,5 +70,31 @@ namespace Inzynierka.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> EditUserProfile(ApplicationUser model)
+        {
+            var user = await _userManager.FindByIdAsync(model.Id);
+            //var idUser = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            user.Age = model.Age;
+            user.Gender = model.Gender;
+            user.About = model.About;
+
+            var result = await _userManager.UpdateAsync(user);
+
+            if(result.Succeeded)
+            {
+                return RedirectToAction("Index");
+            }
+            foreach(var err in result.Errors)
+            {
+                ModelState.AddModelError("", err.Description);
+            }
+            return View(model);
+
+        }
+
     }
 }
