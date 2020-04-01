@@ -53,7 +53,6 @@ namespace Inzynierka.Controllers
         {
             if (ModelState.IsValid)
             {
-                //tripAdvert.UserId = _userManager.GetUserId(HttpContext.User);
                 tripAdvert.UserEmail = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
                 tripAdvert.UserId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
                 
