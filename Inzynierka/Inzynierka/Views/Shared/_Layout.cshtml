@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@using Inzynierka.Models.ApplicationUsers
+@inject SignInManager<ApplicationUser> SignInManager
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -31,16 +35,22 @@
 <body>
 
     <nav class="navbar navbar-expand-sm navbar-dark navbarStyle">
-        
-        
 
-            <a class="navbar-brand text-light font-weight-bold" asp-area="" asp-controller="TripAdvert" asp-action="Index">Travel Companion</a>
-            <div class="navbar-collapse collapse  flex-sm-row-reverse">
 
-                <partial name="_LoginPartial" />
 
-            </div>
-        
+        <a class="navbar-brand text-light font-weight-bold" asp-area="" asp-controller="TripAdvert" asp-action="Index">Travel Companion</a>
+        @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+        {
+            
+                <a class="nav-link text-light" asp-action="CreateRole" asp-controller="Administration">Admin</a>
+            
+        }
+        <div class="navbar-collapse collapse  flex-sm-row-reverse">
+
+            <partial name="_LoginPartial" />
+
+        </div>
+
     </nav>
     <div class="d-flex">
 
@@ -50,7 +60,7 @@
             <div class="list-group list-group-flush back">
                 <a asp-controller="TripAdvert" asp-action="Index" class="list-group-item list-group-item-action backgroundGrayColor text-dark font-weight-normal">Ogłoszenia</a>
                 <a asp-controller="TripAdvert" asp-action="AddTripAdvert" class="list-group-item list-group-item-action backgroundGrayColor text-dark font-weight-normal">Dodaj Ogłoszenie</a>
-                <a asp-controller="UserProfile" asp-action="Index" asp-route-id="" class="list-group-item list-group-item-action backgroundGrayColor text-dark font-weight-normal">Profil</a>       
+                <a asp-controller="UserProfile" asp-action="Index" asp-route-id="" class="list-group-item list-group-item-action backgroundGrayColor text-dark font-weight-normal">Profil</a>
             </div>
         </div>
 

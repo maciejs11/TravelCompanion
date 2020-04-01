@@ -37,7 +37,7 @@ namespace Inzynierka.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "TripAdvert");
+                    return RedirectToAction("ListRoles", "Administration");
                 }
                 foreach(IdentityError error in result.Errors)
                 {
@@ -47,6 +47,12 @@ namespace Inzynierka.Controllers
             
             
             return View(model);
+        }
+        [HttpGet]
+        public IActionResult ListRoles()
+        {
+            var roles = _roleManager.Roles;
+            return View(roles);
         }
 
     }
