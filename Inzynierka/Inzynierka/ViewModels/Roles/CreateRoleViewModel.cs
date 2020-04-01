@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Inzynierka.ViewModels
 {
     public class CreateRoleViewModel
-    {   [Required]
+    {   [Required(ErrorMessage ="Nazwa roli jest wymagana")]
         public string RoleName { get; set; }
     }
 }

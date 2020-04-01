@@ -1,39 +1,46 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @model IEnumerable<IdentityRole>
 
-<h2>Wszystkie role</h2>
 
-@if (Model.Any())
-{
-    <a style="margin-bottom:1em" asp-action="CreateRole" asp-controller="Administration" class="btn btn-primary">Dodaj nową rolę</a>
+<div class="col-md-8">
+    <div class="row">
+        <h2>Wszystkie role</h2>
+        <div class="col-md-1">
+            <a style="margin-bottom:1em" asp-action="CreateRole" asp-controller="Administration" class="btn btn-primary">Dodaj nową rolę</a>
+        </div>
+    </div>
+    @if (Model.Any())
+    {
 
-    foreach (var role in Model)
+
+        foreach (var role in Model)
+        {
+            <div class="card">
+                <div class="card-header">
+                    ID roli: @role.Id
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">@role.Name</h5>
+                </div>
+                <div class="card-footer">
+                    <a asp-action="EditRole" asp-controller="Administration" asp-route-id="@role.Id" class="btn btn-primary">Edytuj</a>
+                    <a href="#" class="btn btn-danger">Usuń</a>
+                </div>
+            </div>
+        }
+    }
+    else
     {
         <div class="card">
             <div class="card-header">
-                ID roli: @role.Id
+                Nie utworzono jeszcze żadnych ról
             </div>
             <div class="card-body">
-                <h5 class="card-title">@role.Name</h5>
-            </div>
-            <div class="card-footer">
-                <a href="#" class="btn btn-primary">Edytuj</a>
-                <a href="#" class="btn btn-danger">Usuń</a>
+                <h5 class="card-title">
+                    Użyj przycisku poniżej aby stworzyć role
+                </h5>
+                <a asp-action="CreateRole" asp-controller="Administration" class="btn btn-primary">Utwórz rolę</a>
             </div>
         </div>
     }
-}
-else
-{
-    <div class="card">
-        <div class="card-header">
-            Nie utworzono jeszcze żadnych ról
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">
-                Użyj przycisku poniżej aby stworzyć role
-            </h5>
-            <a asp-action="CreateRole" asp-controller="Administration" class="btn btn-primary">Utwórz rolę</a>
-        </div>
-    </div>
-}
+</div>
