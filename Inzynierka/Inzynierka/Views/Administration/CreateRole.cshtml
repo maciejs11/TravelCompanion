@@ -1,18 +1,18 @@
 ﻿@model Inzynierka.ViewModels.CreateRoleViewModel
-
-<h2>Stwórz nową rolę</h2>
-
-
+<div class="row">
     <div class="col-md-6">
-        <form  method="post">           
-            
+        <h2>Stwórz nową rolę</h2>
+        <form method="post">
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="RoleName">Nazwa roli</label>
                 <input asp-for="RoleName" class="form-control" />
                 <span asp-validation-for="RoleName" class="text-danger"></span>
             </div>
-            
+
             <button type="submit" class="btn btn-primary">Stwórz rolę</button>
+            <a asp-action="ListRoles" class="btn btn-danger">Anuluj</a> 
         </form>
     </div>
+    </div>
+

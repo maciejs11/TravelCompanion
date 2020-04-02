@@ -1,14 +1,16 @@
 ﻿@model Inzynierka.ViewModels.UserProfileViewModel
 
 <link href="~/css/TravelCompanionStyle.css" />
-<div class="row"  style="margin-left:auto">
-    <h2 >@Model.PageTitle</h2>   
-    <div class="col-md-1">
-        <a asp-controller="UserProfile" asp-action="EditUserProfile" asp-route-id="@Model.UserProfiles.Id" class="h4 btn btn-default">Edytuj profil</a>
-    </div>
+<div class="row" style="margin:auto">
+    
+        <h2>@Model.PageTitle</h2>
+        <div class="col-md-1">
+            <a asp-controller="UserProfile" asp-action="EditUserProfile" asp-route-id="@Model.UserProfiles.Id" class="h4 btn btn-default">Edytuj profil</a>
+        </div>
+        
 </div>
 
-<div class="row" style="margin-left:auto">
+<div  style="margin:auto">
     <div class="col-md-6 card card-body backgroundGrayColor" >
         <div style="padding:10px">
             <h4 class="d-inline">Imię i nazwisko: </h4>
