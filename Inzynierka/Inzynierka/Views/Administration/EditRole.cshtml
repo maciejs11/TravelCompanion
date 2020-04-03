@@ -42,8 +42,9 @@
                     }
                 </div>
                 <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Dodaj użytkownika</a>
-                    <a href="#" class="btn btn-danger">Usuń użytkownika</a>
+                    <a asp-action="EditUsersInRole" asp-controller="Administration"
+`````````````````````  asp-route-roleId="@Model.Id" class="btn btn-primary">Dodaj lub usuń użytkownika</a>
+                    
                 </div>
             </div>
         </div>
