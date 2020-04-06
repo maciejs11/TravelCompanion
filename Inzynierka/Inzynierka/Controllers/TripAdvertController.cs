@@ -62,6 +62,8 @@ namespace Inzynierka.Controllers
             return View(tripAdvert);
         }
 
+      
+
         public IActionResult AddTripAdvertComplete()
         {
             return View();

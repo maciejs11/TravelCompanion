@@ -26,11 +26,51 @@ namespace Inzynierka.Controllers
             _tripAdvertRepository = tripAdvertRepository;
         }
 
+        public async Task<IActionResult> DeleteUser (string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+
+            if(user == null)
+            {
+                return View("NotFoundUser");
+            }
+            else
+            {
+                var result = await _userManager.DeleteAsync(user);
+
+                if(result.Succeeded)
+                {
+                    return RedirectToAction("ListUsers");                   
+                }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+            }
+
+            return View("ListUsers");
+
+        }
+
         [HttpGet]
         public IActionResult ListUsers()
         {
             var users = _userManager.Users.OrderBy(x => x.UserName);
             return View(users);
+        }
+
+        [HttpGet]
+        public IActionResult DeleteTripAdvert()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult DeleteTripAdvert(Guid id)
+        {
+            _tripAdvertRepository.DeleteTripAdvert(id);
+            return RedirectToAction("ListTripAdverts");
+
         }
 
         [HttpGet]

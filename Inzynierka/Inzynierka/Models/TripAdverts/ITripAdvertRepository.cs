@@ -9,5 +9,6 @@ namespace Inzynierka.Models.TripAdverts
     {
         IEnumerable<TripAdvert> GetAllTripAdverts();
         void AddTripAdvert(TripAdvert tripAdvert);
+        void DeleteTripAdvert(Guid id);
     }
 }

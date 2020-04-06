@@ -39,37 +39,58 @@
     </div>
 </div>
 
-<h4 style="padding-top:20px">Ogłoszenia użytkownika</h4>
+<h4 style="padding-top:20px; margin-bottom:2%">Ogłoszenia użytkownika</h4>
 
-@foreach (var tripAdvert in Model.TripAdverts)
-{<div style="margin-bottom:3%" class="row col-md-8">
-        <div class="card card-body backgroundGrayColor ">
-            <div>
-                <h4 class="d-inline font-weight-bold ">@tripAdvert.Title</h4>
-                <p class="d-inline float-right font-weight-light">@tripAdvert.AdvertDate</p>
+@if (Model.TripAdverts.Any())
+{
+    @foreach (var tripAdvert in Model.TripAdverts)
+    {
+        <div style="margin-bottom:3%" class="row col-md-8">
+            <div class="card card-body backgroundGrayColor ">
+                <div>
+                    <h4 class="d-inline font-weight-bold ">@tripAdvert.Title</h4>
+                    <p class="d-inline float-right font-weight-light">@tripAdvert.AdvertDate</p>
+
+                </div>
+                <div>
+                    <h5 class=" d-inline font-weight-normal"> Kraj: @tripAdvert.Country</h5>
+                    @*<a asp-controller="UserProfile" asp-action="Index" asp-route="" class="d-inline float-right font-weight-normal">@tripAdvert.UserEmail</a>*@
+
+
+
+
+
+                    @if (!String.IsNullOrEmpty(tripAdvert.UserEmail))
+                    {
+                        @Html.ActionLink(tripAdvert.UserEmail, "OtherUserProfile", "UserProfile", new { id = tripAdvert.UserEmail }, new { @class = "if-inline float-right font-weight-normal" })
+                    }
+                    else
+                    {
+                        <p>tripAdvert.UserEmail</p>
+                    }
+
+                </div>
+                <p class=" font-weight-normal">@tripAdvert.Content</p>
+
 
             </div>
-            <div>
-                <h5 class=" d-inline font-weight-normal"> Kraj: @tripAdvert.Country</h5>
-                @*<a asp-controller="UserProfile" asp-action="Index" asp-route="" class="d-inline float-right font-weight-normal">@tripAdvert.UserEmail</a>*@
+        </div>
+    }
 
-
-
-
-
-                @if (!String.IsNullOrEmpty(tripAdvert.UserEmail))
-                {
-                    @Html.ActionLink(tripAdvert.UserEmail, "OtherUserProfile", "UserProfile", new { id = tripAdvert.UserEmail }, new { @class = "if-inline float-right font-weight-normal" })
-                }
-                else
-                {
-                    <p>tripAdvert.UserEmail</p>
-                }
-
+}
+else
+{
+    <div class="row">
+        <div style="margin-bottom:3%" class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    Brak ogłoszeń
+                </div>
+                <div class="card-body">
+                    <h5>Użytkownik nie dodał jeszcze żadnych ogłoszeń.</h5>
+                </div>
+                
             </div>
-            <p class=" font-weight-normal">@tripAdvert.Content</p>
-
-
         </div>
     </div>
 }

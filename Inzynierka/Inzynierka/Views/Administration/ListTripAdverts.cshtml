@@ -13,36 +13,39 @@
         {
             @foreach (var tripAdvert in Model)
             {<div style="margin-bottom:3%">
-                    <div class="card card-body backgroundGrayColor ">
-                        <div>
-                            <h4 class="d-inline font-weight-bold ">@tripAdvert.Title</h4>
-                            <p class="d-inline float-right font-weight-light">@tripAdvert.AdvertDate</p>
+                 <div class="card">
+                     <div class="card-header">
+                         ID ogłoszenia: @tripAdvert.TripAdvertID
+                     </div>
+                     <div class="card card-body backgroundGrayColor ">
+                         <div>
+                             <h4 class="d-inline font-weight-bold ">@tripAdvert.Title</h4>
+                             <p class="d-inline float-right font-weight-light">@tripAdvert.AdvertDate</p>
 
-                        </div>
-                        <div>
-                            <h5 class=" d-inline font-weight-normal"> Kraj: @tripAdvert.Country</h5>
-                            @*<a asp-controller="UserProfile" asp-action="Index" asp-route="" class="d-inline float-right font-weight-normal">@tripAdvert.UserEmail</a>*@
-
-
-
-
-
-                            @if (!String.IsNullOrEmpty(tripAdvert.UserEmail))
-                            {
-                                @Html.ActionLink(tripAdvert.UserEmail, "OtherUserProfile", "UserProfile", new { id = tripAdvert.UserEmail }, new { @class = "if-inline float-right font-weight-normal" })
-                            }
-
+                         </div>
+                         <div>
+                             <h5 class=" d-inline font-weight-normal"> Kraj: @tripAdvert.Country</h5>
+                           
+                             @if (!String.IsNullOrEmpty(tripAdvert.UserEmail))
+                             {
+                                 @Html.ActionLink(tripAdvert.UserEmail, "OtherUserProfile", "UserProfile", new { id = tripAdvert.UserEmail }, new { @class = "if-inline float-right font-weight-normal" })
+                             }
 
 
-                        </div>
-                        <p class=" font-weight-normal">@tripAdvert.Content</p>
+
+                         </div>
+                         <p class=" font-weight-normal">@tripAdvert.Content</p>
 
 
-                    </div>
-                    <div class="card-footer">
-                        <a class="btn btn-danger" href="#">Usuń ogłoszenie</a>
-                    </div>
-                </div>
+                     </div>
+                     <div class="card-footer">
+                         <form asp-action="DeleteTripAdvert" asp-route-id="@tripAdvert.TripAdvertID" method="post">
+                             <button type="submit" class="btn btn-danger">Usuń ogłoszenie</button>
+                         </form>
+
+                     </div>
+                 </div>
+</div>
             }
         }
         else
