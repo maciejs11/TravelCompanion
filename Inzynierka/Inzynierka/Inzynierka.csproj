@@ -22,6 +22,7 @@
   <ItemGroup>
     <Folder Include="Data\TripAdvertData\" />
     <Folder Include="Models\Chat\" />
+    <Folder Include="Views\Administration\Users\" />
   </ItemGroup>
 
 </Project>

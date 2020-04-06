@@ -24,6 +24,13 @@ namespace Inzynierka.Controllers
         }
 
         [HttpGet]
+        public IActionResult ListUsers()
+        {
+            var users = _userManager.Users.OrderBy(x => x.UserName);
+            return View(users);
+        }
+
+        [HttpGet]
         public IActionResult CreateRole()
         {
             return View();

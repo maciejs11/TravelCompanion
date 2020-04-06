@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Inzynierka.Models.ApplicationUsers.ApplicationUser>
+
+@{
+    ViewBag.Title = "Wszyscy użytkownicy";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="row" style="margin:auto" >
+            <h2 style="margin-bottom:2%">Wszyscy użytkownicy</h2>
+            <div class="col-md-1">
+                <a class="btn btn-primary" asp-area="Identity" asp-page="/Account/Register">Dodaj nowego użytkownika</a>
+            </div>
+        </div>
+
+        @if (Model.Any())
+        {
+
+
+            foreach (var user in Model)
+            {
+                <div style="margin-bottom:3%">
+                    <div class="card">
+                        <div class="card-header">
+                            ID użytkownika: @user.Id
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">@user.UserName</h5>
+                        </div>
+                        <div class="card-footer">
+                            <a class="btn btn-primary" href="#">Zobacz profil</a>
+                            <a class="btn btn-danger" href="#">Usuń użytkownika</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div style="margin-bottom:3%">
+                <div class="card">
+                    <div class="card-header">
+                        Nie ma jeszcze żadnych użytkowników
+                    </div>
+                    <div class="card-body">
+                        <h5>Użyj przycisku powyżej</h5>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
