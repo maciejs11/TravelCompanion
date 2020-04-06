@@ -28,8 +28,8 @@
                             <h5 class="card-title">@user.UserName</h5>
                         </div>
                         <div class="card-footer">
-                            <a class="btn btn-primary" href="#">Zobacz profil</a>
-                            <a class="btn btn-danger" href="#">Usuń użytkownika</a>
+                            <a class="btn btn-primary" href='@Url.Action("OtherUserProfile", "UserProfile", new { id = user.UserName })' >Zobacz profil</a>
+                            <a class="btn btn-danger" href="#" >Usuń użytkownika</a>
                         </div>
                     </div>
                 </div>
