@@ -22,12 +22,15 @@ namespace Inzynierka.Controllers
         private readonly IUserProfileRepository _userProfileRepository;
         private readonly UserManager<ApplicationUser> _userManager;
         public readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly SignInManager<ApplicationUser> _signInManager;
 
-        public UserProfileController(IUserProfileRepository userProfileRepository, UserManager<ApplicationUser> userManager, IHttpContextAccessor httpContextAccessor)
+        public UserProfileController(IUserProfileRepository userProfileRepository, UserManager<ApplicationUser> userManager,
+            IHttpContextAccessor httpContextAccessor, SignInManager<ApplicationUser> signInManager)
         {
             _userManager = userManager;
             _userProfileRepository = userProfileRepository;
             _httpContextAccessor = httpContextAccessor;
+            _signInManager = signInManager;
 
         }
         public IActionResult Index(String id)
@@ -41,8 +44,18 @@ namespace Inzynierka.Controllers
             return View(userProfileViewModel);
         }
 
-        public IActionResult OtherUserProfile(String id)
+        public async Task<IActionResult> OtherUserProfile(String id)
         {
+            var user = await _userManager.FindByEmailAsync(id);
+            var loggedInUser = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+
+            if (user == null)
+            {
+                return View("NotfoundUser");
+            }
+            else if(user.Email == loggedInUser){
+                return RedirectToAction("Index", "UserProfile");
+            }
             UserProfileViewModel userProfileViewModel = new UserProfileViewModel();
             userProfileViewModel.PageTitle = "Profil użytkownika";
   
