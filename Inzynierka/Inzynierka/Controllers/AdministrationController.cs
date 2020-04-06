@@ -1,4 +1,5 @@
 ﻿using Inzynierka.Models.ApplicationUsers;
+using Inzynierka.Models.TripAdverts;
 using Inzynierka.ViewModels;
 using Inzynierka.ViewModels.Roles;
 using Microsoft.AspNetCore.Authorization;
@@ -16,11 +17,13 @@ namespace Inzynierka.Controllers
     {
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly ITripAdvertRepository _tripAdvertRepository;
 
-        public AdministrationController(RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager)
+        public AdministrationController(RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager, ITripAdvertRepository tripAdvertRepository)
         {
             _roleManager = roleManager;
             _userManager = userManager;
+            _tripAdvertRepository = tripAdvertRepository;
         }
 
         [HttpGet]
@@ -28,6 +31,13 @@ namespace Inzynierka.Controllers
         {
             var users = _userManager.Users.OrderBy(x => x.UserName);
             return View(users);
+        }
+
+        [HttpGet]
+        public IActionResult ListTripAdverts()
+        {
+            var tripAdverts = _tripAdvertRepository.GetAllTripAdverts().OrderByDescending(t => t.AdvertDate);
+            return View(tripAdverts);
         }
 
         [HttpGet]
