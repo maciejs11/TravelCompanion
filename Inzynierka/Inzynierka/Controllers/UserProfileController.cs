@@ -23,14 +23,16 @@ namespace Inzynierka.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         public readonly IHttpContextAccessor _httpContextAccessor;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly ITripAdvertRepository _tripAdvertRepository;
 
         public UserProfileController(IUserProfileRepository userProfileRepository, UserManager<ApplicationUser> userManager,
-            IHttpContextAccessor httpContextAccessor, SignInManager<ApplicationUser> signInManager)
+            IHttpContextAccessor httpContextAccessor, SignInManager<ApplicationUser> signInManager, ITripAdvertRepository tripAdvertRepository)
         {
             _userManager = userManager;
             _userProfileRepository = userProfileRepository;
             _httpContextAccessor = httpContextAccessor;
             _signInManager = signInManager;
+            _tripAdvertRepository = tripAdvertRepository;
 
         }
         public IActionResult Index(String id)
@@ -106,6 +108,14 @@ namespace Inzynierka.Controllers
                 ModelState.AddModelError("", err.Description);
             }
             return View(model);
+
+        }
+
+        [HttpPost]
+        public IActionResult DeleteTripAdvertUserProfile(Guid id)
+        {
+            _tripAdvertRepository.DeleteTripAdvertUserProfile(id);
+            return RedirectToAction("Index");
 
         }
 

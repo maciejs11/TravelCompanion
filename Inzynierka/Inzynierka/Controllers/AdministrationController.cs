@@ -60,9 +60,9 @@ namespace Inzynierka.Controllers
         }
 
         [HttpPost]
-        public IActionResult DeleteTripAdvert(Guid id)
+        public IActionResult DeleteTripAdvertAdmin(Guid id)
         {
-            _tripAdvertRepository.DeleteTripAdvert(id);
+            _tripAdvertRepository.DeleteTripAdvertAdmin(id);
             return RedirectToAction("ListTripAdverts");
 
         }

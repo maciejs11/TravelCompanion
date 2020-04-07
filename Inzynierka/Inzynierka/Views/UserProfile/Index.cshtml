@@ -37,34 +37,41 @@
 @if (Model.TripAdverts.Any())
 {
     @foreach (var tripAdvert in Model.TripAdverts)
-    {<div style="margin-bottom:3%" class="row col-md-8">
-            <div class="card card-body backgroundGrayColor ">
-                <div>
-                    <h4 class="d-inline font-weight-bold ">@tripAdvert.Title</h4>
-                    <p class="d-inline float-right font-weight-light">@tripAdvert.AdvertDate</p>
+    {<div class="row">
+            <div style="margin-bottom:3%" class="col-md-8">
+                <div class="card">
+                    <div class="card-body backgroundGrayColor ">
+                        <div style="margin-bottom:2%">
+                            <h4 class="d-inline font-weight-bold ">@tripAdvert.Title</h4>
+                            <p class="d-inline float-right font-weight-light">@tripAdvert.AdvertDate</p>
+
+                        </div>
+                        <div style="margin-bottom:1%">
+                            <h5 class=" d-inline font-weight-normal" > Kraj: @tripAdvert.Country</h5>
+
+                            @if (!String.IsNullOrEmpty(tripAdvert.UserEmail))
+                            {
+                                @Html.ActionLink(tripAdvert.UserEmail, "Index", "UserProfile", new { id = tripAdvert.UserEmail }, new { @class = "if-inline float-right font-weight-normal" })
+                            }
+                            else
+                            {
+                                <p>tripAdvert.UserEmail</p>
+                            }
+
+                        </div>
+                        <p class=" font-weight-normal">@tripAdvert.Content</p>
+                    </div>
+
+                    <div class="card-footer">
+                        <form asp-action="DeleteTripAdvertUserProfile" asp-route-id="@tripAdvert.TripAdvertID" method="post">
+                            <button type="submit" class="btn btn-danger">Usuń ogłoszenie</button>
+                        </form>
+
+                    </div>
+
+
 
                 </div>
-                <div>
-                    <h5 class=" d-inline font-weight-normal"> Kraj: @tripAdvert.Country</h5>
-                    @*<a asp-controller="UserProfile" asp-action="Index" asp-route="" class="d-inline float-right font-weight-normal">@tripAdvert.UserEmail</a>*@
-
-
-
-
-
-                    @if (!String.IsNullOrEmpty(tripAdvert.UserEmail))
-                    {
-                        @Html.ActionLink(tripAdvert.UserEmail, "Index", "UserProfile", new { id = tripAdvert.UserEmail }, new { @class = "if-inline float-right font-weight-normal" })
-                    }
-                    else
-                    {
-                        <p>tripAdvert.UserEmail</p>
-                    }
-
-                </div>
-                <p class=" font-weight-normal">@tripAdvert.Content</p>
-
-
             </div>
         </div>
     }

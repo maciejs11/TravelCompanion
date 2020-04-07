@@ -26,7 +26,15 @@ namespace Inzynierka.Models.TripAdverts
             _appDbContext.SaveChanges();
         }
 
-        public void DeleteTripAdvert(Guid id)
+        public void DeleteTripAdvertAdmin(Guid id)
+        {
+            var tripAdvert = new TripAdvert { TripAdvertID = id };
+            _appDbContext.TripAdverts.Attach(tripAdvert);
+            _appDbContext.TripAdverts.Remove(tripAdvert);
+            _appDbContext.SaveChanges();
+        }
+
+        public void DeleteTripAdvertUserProfile(Guid id)
         {
             var tripAdvert = new TripAdvert { TripAdvertID = id };
             _appDbContext.TripAdverts.Attach(tripAdvert);
