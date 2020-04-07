@@ -41,5 +41,13 @@ namespace Inzynierka.Models.TripAdverts
             _appDbContext.TripAdverts.Remove(tripAdvert);
             _appDbContext.SaveChanges();
         }
+
+        public void DeleteTripAdvertByUserId(string userID)
+        {
+            var tripAdvert = new TripAdvert { UserId = userID };
+            _appDbContext.TripAdverts.Attach(tripAdvert);
+            _appDbContext.TripAdverts.Remove(tripAdvert);
+            _appDbContext.SaveChanges();
+        }
     }
 }

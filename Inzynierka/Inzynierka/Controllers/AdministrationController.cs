@@ -36,9 +36,11 @@ namespace Inzynierka.Controllers
             }
             else
             {
+                _tripAdvertRepository.DeleteTripAdvertByUserId(user.Id);
                 var result = await _userManager.DeleteAsync(user);
+                
 
-                if(result.Succeeded)
+                if (result.Succeeded)
                 {
                     return RedirectToAction("ListUsers");                   
                 }

@@ -11,5 +11,6 @@ namespace Inzynierka.Models.TripAdverts
         void AddTripAdvert(TripAdvert tripAdvert);
         void DeleteTripAdvertAdmin(Guid id);
         void DeleteTripAdvertUserProfile(Guid id);
+        void DeleteTripAdvertByUserId(string userID);
     }
 }
