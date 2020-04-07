@@ -7,12 +7,12 @@
     @foreach (var tripAdvert in Model.TripAdverts)
     {<div style="margin-bottom:5%">
             <div class="card card-body backgroundGrayColor ">
-                <div>
+                <div style="margin-bottom:1%">
                     <h4 class="d-inline font-weight-bold ">@tripAdvert.Title</h4>
                     <p class="d-inline float-right font-weight-light">@tripAdvert.AdvertDate</p>
 
                 </div>
-                <div>
+                <div style="margin-bottom:1%">
                     <h5 class=" d-inline font-weight-normal"> Kraj: @tripAdvert.Country</h5>
                     @*<a asp-controller="UserProfile" asp-action="Index" asp-route="" class="d-inline float-right font-weight-normal">@tripAdvert.UserEmail</a>*@
 

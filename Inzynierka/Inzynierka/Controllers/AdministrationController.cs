@@ -59,12 +59,6 @@ namespace Inzynierka.Controllers
             return View(users);
         }
 
-        [HttpGet]
-        public IActionResult DeleteTripAdvert()
-        {
-            return View();
-        }
-
         [HttpPost]
         public IActionResult DeleteTripAdvert(Guid id)
         {

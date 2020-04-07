@@ -29,7 +29,9 @@ namespace Inzynierka.Models.TripAdverts
         public void DeleteTripAdvert(Guid id)
         {
             var tripAdvert = new TripAdvert { TripAdvertID = id };
+            _appDbContext.TripAdverts.Attach(tripAdvert);
             _appDbContext.TripAdverts.Remove(tripAdvert);
+            _appDbContext.SaveChanges();
         }
     }
 }
