@@ -4,14 +4,16 @@ using Inzynierka.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Inzynierka.Data.Migrations
+namespace Inzynierka.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200409180126_AddMessageModelWithForeignKey")]
+    partial class AddMessageModelWithForeignKey
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -110,6 +112,8 @@ namespace Inzynierka.Data.Migrations
 
                     b.Property<DateTime>("AdvertDate");
 
+                    b.Property<string>("ApplicationUserId");
+
                     b.Property<string>("Content")
                         .IsRequired();
 
@@ -129,7 +133,7 @@ namespace Inzynierka.Data.Migrations
 
                     b.HasKey("TripAdvertID");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("ApplicationUserId");
 
                     b.ToTable("TripAdverts");
                 });
@@ -255,7 +259,7 @@ namespace Inzynierka.Data.Migrations
                 {
                     b.HasOne("Inzynierka.Models.ApplicationUsers.ApplicationUser", "ApplicationUser")
                         .WithMany("TripAdverts")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("ApplicationUserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
