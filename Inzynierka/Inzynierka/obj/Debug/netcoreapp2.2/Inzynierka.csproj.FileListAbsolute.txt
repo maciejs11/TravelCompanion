@@ -53,3 +53,5 @@ D:\GitHubDyskD\Inzynierka\Inzynierka\Inzynierka\obj\Debug\netcoreapp2.2\Razor\Ar
 D:\GitHubDyskD\Inzynierka\Inzynierka\Inzynierka\obj\Debug\netcoreapp2.2\Razor\Views\Administration\ListUsers.g.cshtml.cs
 D:\GitHubDyskD\Inzynierka\Inzynierka\Inzynierka\obj\Debug\netcoreapp2.2\Razor\Views\Administration\ListTripAdverts.g.cshtml.cs
 D:\GitHubDyskD\Inzynierka\Inzynierka\Inzynierka\obj\Debug\netcoreapp2.2\Razor\Views\Shared\NotFoundUser.g.cshtml.cs
+D:\GitHubDyskD\Inzynierka\Inzynierka\Inzynierka\obj\Debug\netcoreapp2.2\Razor\Views\ChatEmail\Index.g.cshtml.cs
+D:\GitHubDyskD\Inzynierka\Inzynierka\Inzynierka\obj\Debug\netcoreapp2.2\Razor\Views\ChatEmail\EmailSendSucceed.g.cshtml.cs

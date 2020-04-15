@@ -1,0 +1,93 @@
+﻿
+<body>
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Napisz wiadomość</h2>
+            <form>
+                <div class="form-group" data-validate="Name is required">
+                    <label>Imię</label>
+                    <input id="name" type="text" class="form-control" />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="form-group" data-validate="Valid email is required: ex@abc.xy">
+                    <label>Email</label>
+                    <input id="email" type="text" class="form-control" />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="form-group" data-validate="Message is required">
+                    <label>Wiadomość</label>
+                    <textarea id="message" class="form-control"></textarea>
+                    <span class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <button onclick="SendEmail()" class="btn btn-default">Wyślij wiadomość</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+    @*<span class="contact2-form-title">
+            Contact Us
+        </span>
+        <div class="wrap-input2 validate-input" data-validate="Name is required">
+            <label>Name</label>
+            <input class="input2" type="text" id="name">
+            <span class="focus-input2" data-placeholder="NAME"></span>
+        </div>
+        <div class="wrap-input2 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+            <label>Email</label>
+            <input class="input2" type="text" id="email">
+            <span class="focus-input2" data-placeholder="EMAIL"></span>
+        </div>
+        <div class="wrap-input2 validate-input" data-validate="Message is required">
+            <label>Message</label>
+            <textarea class="input2" id="message"></textarea>
+            <span class="focus-input2" data-placeholder="MESSAGE"></span>
+        </div>
+        <div class="container-contact2-form-btn">
+            <div class="wrap-contact2-form-btn">
+                <div class="contact2-form-bgbtn"></div>
+                <button class="contact2-form-btn" onclick="SendEmail()">
+                    Send Your Message
+                </button>
+            </div>
+        </div>*@
+
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
+    <script>
+    function SendEmail(){
+      $.ajax(
+      {
+        type: "POST",
+        url: '@Url.Action("SendEmail", "ChatEmail")',
+        data: {
+          Name: $("#name").val(),
+          Email: $("#email").val(),
+          Message: $("#message").val()
+        },
+        error: function (result) {
+          console.log(result);
+        },
+        success: function (result) {
+          alert(result);
+          $("#name").val("");
+          $("#email").val("");
+          $("#message").val("");
+        }
+      });
+    }
+    </script>
+</body>
