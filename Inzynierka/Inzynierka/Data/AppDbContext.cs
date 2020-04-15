@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Inzynierka.Models.ApplicationUsers;
 using Inzynierka.Models.Chat;
+using Inzynierka.Models.ChatEmail;
 using Inzynierka.Models.TripAdverts;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,7 @@ namespace Inzynierka.Data
         public DbSet<TripAdvert> TripAdverts { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<Message> Messages { get; set; }
+       
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -31,6 +33,8 @@ namespace Inzynierka.Data
                 .HasOne<ApplicationUser>(x => x.ApplicationUser)
                 .WithMany(x => x.TripAdverts)
                 .HasForeignKey(x => x.UserId);
+
+           
         }
     }
 }

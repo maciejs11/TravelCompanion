@@ -7,6 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using MimeKit;
 using System.Net;
 using System.Net.Mail;
+using Inzynierka.Models.ChatEmail;
+using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
+using Inzynierka.Models.ApplicationUsers;
+using Microsoft.AspNetCore.Identity;
 
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -15,17 +20,27 @@ namespace Inzynierka.Controllers
 {
     public class ChatEmailController : Controller
     {
+        private readonly UserManager<ApplicationUser> _userManager;
+        public readonly IHttpContextAccessor _httpContextAccessor;
 
-        public IActionResult Index()
+        public ChatEmailController(UserManager<ApplicationUser> userManager, IHttpContextAccessor httpContextAccessor)
+        {
+            _userManager = userManager;
+            _httpContextAccessor = httpContextAccessor;
+        }
+
+        [HttpGet]
+        public IActionResult SendEmail()
         {
             return View();
         }
-
-        public string SendEmail(string Name, string Email, string Message)
+        [HttpPost]
+        public IActionResult SendEmail(EmailMessage emailMessage)
         {
 
-            try
+            if (ModelState.IsValid)
             {
+                string userEmail = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
                 // Credentials
                 var credentials = new NetworkCredential("travelcompanionn3@gmail.com", "iNzynI3rk@24");
                 // Mail message
@@ -33,10 +48,10 @@ namespace Inzynierka.Controllers
                 {
                     From = new MailAddress("travelcompanionn3@gmail.com"),
                     Subject = "Wiadomosc prywatna od użytkownika z TravelCompanion.",
-                    Body = "Użytkownik maciejs1112@gmail.com z serwisu TravelCompanion napisał do Ciebie wiadomość: " + Message
+                    Body = "Użytkownik " + userEmail +" z serwisu TravelCompanion napisał do Ciebie wiadomość: " + emailMessage.Message
                 };
                 mail.IsBodyHtml = true;
-                mail.To.Add(new MailAddress(Email));
+                mail.To.Add(new MailAddress(emailMessage.EmailTo));
                 // Smtp client
                 var client = new SmtpClient()
                 {
@@ -48,13 +63,12 @@ namespace Inzynierka.Controllers
                     Credentials = credentials
                 };
                 client.Send(mail);
-                return "Email Sent Successfully!";
+                return RedirectToAction("Index", "TripAdvert");
             }
-            catch (System.Exception e)
-            {
-                return e.Message;
-            }
-
+            return View(emailMessage);
         }
+
+
     }
 }
+

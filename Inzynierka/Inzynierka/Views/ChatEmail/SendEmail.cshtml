@@ -1,26 +1,22 @@
-﻿
+﻿@model Inzynierka.Models.ChatEmail.EmailMessage
+
 <body>
     <div class="row">
         <div class="col-md-8">
             <h2>Napisz wiadomość</h2>
-            <form>
-                <div class="form-group" data-validate="Name is required">
-                    <label>Imię</label>
-                    <input id="name" type="text" class="form-control" />
-                    <span class="text-danger"></span>
-                </div>
-                <div class="form-group" data-validate="Valid email is required: ex@abc.xy">
-                    <label>Email</label>
-                    <input id="email" type="text" class="form-control" />
-                    <span class="text-danger"></span>
-                </div>
-                <div class="form-group" data-validate="Message is required">
-                    <label>Wiadomość</label>
-                    <textarea id="message" class="form-control"></textarea>
-                    <span class="text-danger"></span>
+            <form asp-action="SendEmail" method="post">
+                <div class="form-group">
+                    <label asp-for="EmailTo">Email</label>
+                    <input asp-for="EmailTo" class="form-control" />
+                    <span asp-validation-for="EmailTo" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <button onclick="SendEmail()" class="btn btn-default">Wyślij wiadomość</button>
+                    <label asp-for="Message">Wiadomość</label>
+                    <textarea asp-for="Message" class="form-control"></textarea>
+                    <span asp-validation-for="Message" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <button typ="submit" class="btn btn-default">Wyślij wiadomość</button>
                 </div>
             </form>
         </div>
@@ -58,7 +54,7 @@
             </div>
         </div>*@
 
-    <!--===============================================================================================-->
+    @*<!--===============================================================================================-->
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
     <!--===============================================================================================-->
     <script src="vendor/bootstrap/js/popper.js"></script>
@@ -89,5 +85,5 @@
         }
       });
     }
-    </script>
+    </script>*@
 </body>
