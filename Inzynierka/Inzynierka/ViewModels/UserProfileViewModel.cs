@@ -1,4 +1,5 @@
 ﻿using Inzynierka.Models.ApplicationUsers;
+using Inzynierka.Models.ChatEmail;
 using Inzynierka.Models.TripAdverts;
 using System;
 using System.Collections.Generic;

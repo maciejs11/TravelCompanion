@@ -4,14 +4,16 @@ using Inzynierka.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Inzynierka.Data.Migrations
+namespace Inzynierka.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200425154709_deleteExpireDate")]
+    partial class deleteExpireDate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -78,6 +80,29 @@ namespace Inzynierka.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("Inzynierka.Models.Chat.Message", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<string>("Text")
+                        .IsRequired();
+
+                    b.Property<string>("UserID");
+
+                    b.Property<string>("UserName")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserID");
+
+                    b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("Inzynierka.Models.TripAdverts.TripAdvert", b =>
@@ -217,6 +242,13 @@ namespace Inzynierka.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("Inzynierka.Models.Chat.Message", b =>
+                {
+                    b.HasOne("Inzynierka.Models.ApplicationUsers.ApplicationUser", "Sender")
+                        .WithMany("Messages")
+                        .HasForeignKey("UserID");
                 });
 
             modelBuilder.Entity("Inzynierka.Models.TripAdverts.TripAdvert", b =>

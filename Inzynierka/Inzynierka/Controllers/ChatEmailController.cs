@@ -35,11 +35,12 @@ namespace Inzynierka.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult SendEmail(EmailMessage emailMessage)
+        public IActionResult SendEmail(EmailMessage emailMessage )
         {
 
             if (ModelState.IsValid)
             {
+               
                 string userEmail = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
                 // Credentials
                 var credentials = new NetworkCredential("travelcompanionn3@gmail.com", "iNzynI3rk@24");
@@ -48,9 +49,10 @@ namespace Inzynierka.Controllers
                 {
                     From = new MailAddress("travelcompanionn3@gmail.com"),
                     Subject = "Wiadomosc prywatna od użytkownika z TravelCompanion.",
-                    Body = "Użytkownik " + userEmail +" z serwisu TravelCompanion napisał do Ciebie wiadomość: " + emailMessage.Message
+                    Body = "Użytkownik " + userEmail +" z serwisu TravelCompanion napisał do Ciebie wiadomość: " +"\n"+"\n" +"\"" + emailMessage.Message + "\"" +
+                            "\n" + "\n"+ "Możesz odpisać mu na jego e-mail " +userEmail+" lub napisać mu wiadomość wchodząc na jego profil w serwisie TravelCompanion."
                 };
-                mail.IsBodyHtml = true;
+                mail.IsBodyHtml = false;
                 mail.To.Add(new MailAddress(emailMessage.EmailTo));
                 // Smtp client
                 var client = new SmtpClient()

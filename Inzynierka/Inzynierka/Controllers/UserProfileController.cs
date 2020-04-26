@@ -35,7 +35,7 @@ namespace Inzynierka.Controllers
             _tripAdvertRepository = tripAdvertRepository;
 
         }
-        public IActionResult Index(String id)
+        public IActionResult Index()
         {
             UserProfileViewModel userProfileViewModel = new UserProfileViewModel();
             userProfileViewModel.PageTitle = "Mój profil";
@@ -71,8 +71,7 @@ namespace Inzynierka.Controllers
         public async Task<IActionResult> EditUserProfile(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
-            //var idUser = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-
+            
             var model = new ApplicationUser
             {
                 FirstName = user.FirstName,
@@ -81,7 +80,6 @@ namespace Inzynierka.Controllers
                 Gender = user.Gender,
                 About = user.About,
             };
-
             return View(model);
         }
 
@@ -89,8 +87,6 @@ namespace Inzynierka.Controllers
         public async Task<IActionResult> EditUserProfile(ApplicationUser model)
         {
             var user = await _userManager.FindByIdAsync(model.Id);
-            //var idUser = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-
             user.FirstName = model.FirstName;
             user.LastName = model.LastName;
             user.Age = model.Age;
@@ -108,7 +104,6 @@ namespace Inzynierka.Controllers
                 ModelState.AddModelError("", err.Description);
             }
             return View(model);
-
         }
 
         [HttpPost]

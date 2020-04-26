@@ -21,11 +21,6 @@ namespace Inzynierka.Models.UserProfiles
             _httpContextAccessor = httpContextAccessor;
         }
 
-       
-
-        
-
-
         public ApplicationUser GetUserProfile()
         {
             string UserId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -35,8 +30,6 @@ namespace Inzynierka.Models.UserProfiles
         public ApplicationUser GetUserProfileByEmail(string email)
         {
             return _appDbContext.ApplicationUsers.Where(u => u.Email == email).FirstOrDefault();
-           
-
         }
 
         public IEnumerable<TripAdvert> GetTripAdvertsByUserId(string email)

@@ -51,6 +51,7 @@ namespace Inzynierka.Areas.Identity.Pages.Account
             [Display(Name = "Password")]
             public string Password { get; set; }
 
+            [Required(ErrorMessage = "To pole jest obowiązkowe")]
             [DataType(DataType.Password)]
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "Hasła się nie zgadzają.")]
@@ -122,8 +123,6 @@ namespace Inzynierka.Areas.Identity.Pages.Account
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
-
-            // If we got this far, something failed, redisplay form
             return Page();
         }
     }

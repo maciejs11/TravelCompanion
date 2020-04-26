@@ -34,9 +34,6 @@ namespace Inzynierka.Controllers
             TripAdvertsViewModel tripAdvertsViewModel = new TripAdvertsViewModel();
             tripAdvertsViewModel.TripAdverts = _tripAdvertRepository.GetAllTripAdverts().OrderByDescending(t => t.AdvertDate);
             tripAdvertsViewModel.PageTitle = "Ogłoszenia";
-            //ViewBag.PageTitle = "Ogłoszenia";
-            //var tripAdverts = _tripAdvertRepository.GetAllTripAdverts().OrderByDescending(t => t.AdvertDate);
-
             return View(tripAdvertsViewModel);
         }
 

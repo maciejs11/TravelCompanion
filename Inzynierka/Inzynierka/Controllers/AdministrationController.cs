@@ -76,6 +76,8 @@ namespace Inzynierka.Controllers
             return View(tripAdverts);
         }
 
+        //TODO: zrobić delete role
+
         [HttpGet]
         public IActionResult CreateRole()
         {

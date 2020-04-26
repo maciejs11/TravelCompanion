@@ -16,7 +16,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Inzynierka.Models.TripAdverts;
 using Inzynierka.Models.ApplicationUsers;
 using Inzynierka.Models.UserProfiles;
-using Inzynierka.Hubs;
 
 namespace Inzynierka
 {
@@ -80,10 +79,6 @@ namespace Inzynierka
             app.UseCookiePolicy();
 
             app.UseAuthentication();
-            app.UseSignalR(route =>
-            {
-                route.MapHub<ChatHub>("/Chat/ChatIndex");
-            });
            
 
             app.UseMvc(routes =>
