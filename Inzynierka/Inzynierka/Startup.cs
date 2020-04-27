@@ -16,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Inzynierka.Models.TripAdverts;
 using Inzynierka.Models.ApplicationUsers;
 using Inzynierka.Models.UserProfiles;
+using Inzynierka.Models.Administration;
 
 namespace Inzynierka
 {
@@ -54,6 +55,7 @@ namespace Inzynierka
 
             services.AddTransient<ITripAdvertRepository, TripAdvertRepository>();
             services.AddTransient<IUserProfileRepository, UserProfileRepository>();
+            services.AddTransient<IAdministrationRepository, AdministrationRepository>();
             services.AddSignalR();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

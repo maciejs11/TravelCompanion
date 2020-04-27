@@ -1,5 +1,7 @@
-﻿using Inzynierka.Models.ApplicationUsers;
+﻿using Inzynierka.Models.Administration;
+using Inzynierka.Models.ApplicationUsers;
 using Inzynierka.Models.TripAdverts;
+using Inzynierka.Models.UserProfiles;
 using Inzynierka.ViewModels;
 using Inzynierka.ViewModels.Roles;
 using Microsoft.AspNetCore.Authorization;
@@ -18,12 +20,19 @@ namespace Inzynierka.Controllers
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ITripAdvertRepository _tripAdvertRepository;
+        private readonly IUserProfileRepository _userProfileRepository;
+        private readonly IAdministrationRepository _administrationRepository;
 
-        public AdministrationController(RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager, ITripAdvertRepository tripAdvertRepository)
+        public AdministrationController(RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager,
+                                        ITripAdvertRepository tripAdvertRepository, IUserProfileRepository userProfileRepository,
+                                        IAdministrationRepository administrationRepository)
         {
             _roleManager = roleManager;
             _userManager = userManager;
             _tripAdvertRepository = tripAdvertRepository;
+            _userProfileRepository = userProfileRepository;
+            _administrationRepository = administrationRepository;
+            
         }
 
         public async Task<IActionResult> DeleteUser (string id)
@@ -54,9 +63,14 @@ namespace Inzynierka.Controllers
 
         }
 
-        [HttpGet]
-        public IActionResult ListUsers()
+        
+        public IActionResult ListUsers(string search = null)
         {
+            if(!string.IsNullOrEmpty(search))
+            {
+                var foundUsers = _administrationRepository.Search(search);
+                return View(foundUsers);
+            }
             var users = _userManager.Users.OrderBy(x => x.UserName);
             return View(users);
         }
