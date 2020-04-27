@@ -50,7 +50,7 @@ namespace Inzynierka.Controllers
                     From = new MailAddress("travelcompanionn3@gmail.com"),
                     Subject = "Wiadomosc prywatna od użytkownika z TravelCompanion.",
                     Body = "Użytkownik " + userEmail +" z serwisu TravelCompanion napisał do Ciebie wiadomość: " +"\n"+"\n" +"\"" + emailMessage.Message + "\"" +
-                            "\n" + "\n"+ "Możesz odpisać mu na jego e-mail " +userEmail+" lub napisać mu wiadomość wchodząc na jego profil w serwisie TravelCompanion."
+                            "\n" + "\n"+ "Możesz odpisać mu na jego e-mail " +userEmail+" lub napisać mu wiadomość wyszukując go i wchodząc na jego profil w serwisie TravelCompanion."
                 };
                 mail.IsBodyHtml = false;
                 mail.To.Add(new MailAddress(emailMessage.EmailTo));

@@ -1,5 +1,6 @@
 ﻿using Inzynierka.Models.TripAdverts;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace Inzynierka.Models.ApplicationUsers
         public int Age { get; set; }
         public string Gender { get; set; } 
         public string About { get; set; }
-
+       
         public List<TripAdvert> TripAdverts { get; set; }
     }
 }

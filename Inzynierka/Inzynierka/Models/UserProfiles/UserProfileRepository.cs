@@ -7,6 +7,7 @@ using Inzynierka.Data;
 using Inzynierka.Models.ApplicationUsers;
 using Inzynierka.Models.TripAdverts;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 
 namespace Inzynierka.Models.UserProfiles
 {
@@ -14,11 +15,13 @@ namespace Inzynierka.Models.UserProfiles
     {
         private readonly AppDbContext _appDbContext;
         public readonly IHttpContextAccessor _httpContextAccessor;
+        public readonly UserManager<ApplicationUser> _userManager;
 
-        public UserProfileRepository(AppDbContext appDbContext, IHttpContextAccessor httpContextAccessor)
+        public UserProfileRepository(AppDbContext appDbContext, IHttpContextAccessor httpContextAccessor, UserManager<ApplicationUser> userManager)
         {
             _appDbContext = appDbContext;
             _httpContextAccessor = httpContextAccessor;
+            _userManager = userManager;
         }
 
         public ApplicationUser GetUserProfile()
@@ -43,6 +46,9 @@ namespace Inzynierka.Models.UserProfiles
             return _appDbContext.TripAdverts.Where(t => t.UserId == UserId).OrderByDescending(t => t.AdvertDate);
         }
 
-
+        public IEnumerable<ApplicationUser> Search(string search)
+        {
+            return _userManager.Users.Where(x => x.Email.Contains(search));
+        }
     }
 }

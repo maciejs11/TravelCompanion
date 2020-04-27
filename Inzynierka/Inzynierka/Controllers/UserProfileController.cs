@@ -114,5 +114,12 @@ namespace Inzynierka.Controllers
 
         }
 
+        public IActionResult SearchUsers(string search = null)
+        {             
+                var foundUsers = _userProfileRepository.Search(search);
+                return View(foundUsers);
+           
+        }
+
     }
 }
