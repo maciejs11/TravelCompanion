@@ -48,7 +48,6 @@ namespace Inzynierka.Controllers
                 _tripAdvertRepository.DeleteTripAdvertByUserId(user.Id);
                 var result = await _userManager.DeleteAsync(user);
                 
-
                 if (result.Succeeded)
                 {
                     return RedirectToAction("ListUsers");                   
@@ -58,9 +57,7 @@ namespace Inzynierka.Controllers
                     ModelState.AddModelError("", error.Description);
                 }
             }
-
             return View("ListUsers");
-
         }
 
         
@@ -118,9 +115,7 @@ namespace Inzynierka.Controllers
                 {
                     ModelState.AddModelError("", error.Description);
                 }
-            }
-            
-            
+            }           
             return View(model);
         }
         [HttpGet]
@@ -148,7 +143,6 @@ namespace Inzynierka.Controllers
                     model.Users.Add(user.UserName);
                 }
             }
-
             return View(model);
         }
 
@@ -169,8 +163,7 @@ namespace Inzynierka.Controllers
             {
                 ModelState.AddModelError("", error.Description);
             }
-           
-
+          
             return View(model);
         }
         [HttpGet]

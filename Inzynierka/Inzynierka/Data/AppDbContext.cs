@@ -18,7 +18,6 @@ namespace Inzynierka.Data
         public DbSet<TripAdvert> TripAdverts { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
        
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -26,9 +25,7 @@ namespace Inzynierka.Data
             builder.Entity<TripAdvert>()
                 .HasOne<ApplicationUser>(x => x.ApplicationUser)
                 .WithMany(x => x.TripAdverts)
-                .HasForeignKey(x => x.UserId);
-
-           
+                .HasForeignKey(x => x.UserId);          
         }
     }
 }

@@ -55,3 +55,4 @@ D:\GitHubDyskD\Inzynierka\Inzynierka\Inzynierka\obj\Debug\netcoreapp2.2\Razor\Vi
 D:\GitHubDyskD\Inzynierka\Inzynierka\Inzynierka\obj\Debug\netcoreapp2.2\Razor\Views\ChatEmail\EmailSendSucceed.g.cshtml.cs
 D:\GitHubDyskD\Inzynierka\Inzynierka\Inzynierka\obj\Debug\netcoreapp2.2\Razor\Views\ChatEmail\SendEmail.g.cshtml.cs
 D:\GitHubDyskD\Inzynierka\Inzynierka\Inzynierka\obj\Debug\netcoreapp2.2\Razor\Views\UserProfile\SearchUsers.g.cshtml.cs
+D:\GitHubDyskD\Inzynierka\Inzynierka\Inzynierka\obj\Debug\netcoreapp2.2\Razor\Views\TripAdvert\SearchTripAdverts.g.cshtml.cs

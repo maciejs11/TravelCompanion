@@ -49,5 +49,10 @@ namespace Inzynierka.Models.TripAdverts
             _appDbContext.TripAdverts.Remove(tripAdvert);
             _appDbContext.SaveChanges();
         }
+
+        public IEnumerable<TripAdvert> Search(string searchTerm)
+        {
+            return _appDbContext.TripAdverts.Where(x => x.Country.Contains(searchTerm));
+        }
     }
 }

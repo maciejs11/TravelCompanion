@@ -59,11 +59,16 @@ namespace Inzynierka.Controllers
             return View(tripAdvert);
         }
 
-      
-
+     
         public IActionResult AddTripAdvertComplete()
         {
             return View();
+        }
+
+        public IActionResult SearchTripAdverts(string search = null)
+        {
+            var foundTripAdverts = _tripAdvertRepository.Search(search);
+            return View(foundTripAdverts);
         }
 
     }
