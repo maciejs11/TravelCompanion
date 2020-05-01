@@ -36,8 +36,23 @@
 
     <div class="col-md-4">
         @*<h4 style="color:darkcyan">Napisz wiadomość</h4>*@
-        <a asp-controller="ChatEmail" asp-action="SendEmail" class="h4 btn btn-default">Napisz wiadomość</a>
+        @*<a asp-controller="ChatEmail" asp-action="SendEmail" class="h4 btn btn-default">Napisz wiadomość</a>*@
     </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <h2>Napisz wiadomość</h2>
+        <div class="form-group" data-validate="Wiadomość jest wymgana">
+            <label>Wiadomość</label>
+            <textarea id="message" class="form-control"></textarea>
+            <span class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-default" onclick="SendEmail()">Wyślij wiadomość</button>
+        </div>
+    </div>
+
 </div>
 
 <h4 style="padding-top:20px; margin-bottom:2%">Ogłoszenia użytkownika</h4>
@@ -95,3 +110,32 @@ else
         </div>
     </div>
 }
+
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/bootstrap/js/popper.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="js/main.js"></script>
+
+<script>
+    function SendEmail(){
+      $.ajax(
+      {
+        type: "POST",
+        url: '@Url.Action("SendEmail", "UserProfile" , new { email = Model.UserProfiles.Email })',
+        data: {        
+          Message: $("#message").val()
+        },
+        error: function (result) {
+          console.log(result);
+        },
+        success: function (result) {
+          alert(result);         
+          $("#message").val("");
+        }
+      });
+    }
+</script>

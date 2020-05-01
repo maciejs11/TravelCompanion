@@ -29,18 +29,11 @@ namespace Inzynierka.Controllers
             _httpContextAccessor = httpContextAccessor;
         }
 
-        [HttpGet]
-        public IActionResult SendEmail()
+        
+        public string SendEmailForm(string email, string Message )
         {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult SendEmail(EmailMessage emailMessage )
-        {
-
-            if (ModelState.IsValid)
+            try
             {
-               
                 string userEmail = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
                 // Credentials
                 var credentials = new NetworkCredential("travelcompanionn3@gmail.com", "iNzynI3rk@24");
@@ -49,11 +42,11 @@ namespace Inzynierka.Controllers
                 {
                     From = new MailAddress("travelcompanionn3@gmail.com"),
                     Subject = "Wiadomosc prywatna od użytkownika z TravelCompanion.",
-                    Body = "Użytkownik " + userEmail +" z serwisu TravelCompanion napisał do Ciebie wiadomość: " +"\n"+"\n" +"\"" + emailMessage.Message + "\"" +
-                            "\n" + "\n"+ "Możesz odpisać mu na jego e-mail " +userEmail+" lub napisać mu wiadomość wyszukując go i wchodząc na jego profil w serwisie TravelCompanion."
+                    Body = "Użytkownik " + userEmail + " z serwisu TravelCompanion napisał do Ciebie wiadomość: " + "\n" + "\n" + "\"" +Message + "\"" +
+                            "\n" + "\n" + "Możesz odpisać mu na jego e-mail " + userEmail + " lub napisać mu wiadomość wyszukując go i wchodząc na jego profil w serwisie TravelCompanion."
                 };
                 mail.IsBodyHtml = false;
-                mail.To.Add(new MailAddress(emailMessage.EmailTo));
+                mail.To.Add(new MailAddress(email));
                 // Smtp client
                 var client = new SmtpClient()
                 {
@@ -65,9 +58,12 @@ namespace Inzynierka.Controllers
                     Credentials = credentials
                 };
                 client.Send(mail);
-                return RedirectToAction("Index", "TripAdvert");
+                return "Wysłano Email!";
             }
-            return View(emailMessage);
+            catch(System.Exception e)
+            {
+                return e.Message;
+            }
         }
 
 

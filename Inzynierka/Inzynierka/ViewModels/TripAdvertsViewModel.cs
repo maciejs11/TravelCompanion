@@ -1,4 +1,5 @@
 ﻿using Inzynierka.Models.ApplicationUsers;
+using Inzynierka.Models.ChatEmail;
 using Inzynierka.Models.TripAdverts;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace Inzynierka.ViewModels
     {
         public IEnumerable<TripAdvert> TripAdverts { get; set; }
         public string PageTitle { get; set; }
-        //public ApplicationUser ApplicationUser { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
+        public EmailMessage EmailMessage { get; set; }
     }
 }

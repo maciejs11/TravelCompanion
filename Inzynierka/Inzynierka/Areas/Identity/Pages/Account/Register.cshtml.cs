@@ -38,12 +38,18 @@ namespace Inzynierka.Areas.Identity.Pages.Account
 
         public string ReturnUrl { get; set; }
 
+       
+
         public class InputModel
         {
             [Required(ErrorMessage ="To pole jest obowiązkowe")]
             [EmailAddress(ErrorMessage ="Wprowadź poprawny adres email.")]
             [Display(Name = "Email")]
             public string Email { get; set; }
+
+            [Required(ErrorMessage = "To pole jest obowiązkowe")]
+            [Display(Name = "Nazwa użytkownika")]
+            public string UserName { get; set; }
 
             [Required(ErrorMessage = "To pole jest obowiązkowe")]
             [StringLength(100, ErrorMessage = "Hasło musi mieć przynajmniej {2} znaki.", MinimumLength = 3)]
@@ -78,6 +84,7 @@ namespace Inzynierka.Areas.Identity.Pages.Account
             ReturnUrl = returnUrl;
         }
 
+       
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl = returnUrl ?? Url.Content("~/");

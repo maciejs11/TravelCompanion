@@ -1,14 +1,11 @@
 ﻿@model IEnumerable<Inzynierka.Models.ApplicationUsers.ApplicationUser>
 
-
-
-
     <div class="row">
         <div class="col-md-8">
             <form method="post" asp-controller="UserProfile" asp-action="SearchUsers">
                 <h2 style="margin-bottom:2%">Wyszukaj użytkownika</h2>
                 <div class="input-group" style="margin-bottom:2%">
-                    <input class="form-control" name="search" id="search" placeholder="Wpisz nazwę lub e-mail użytkownika" type="text" />
+                    <input class="form-control" name="search" id="search" placeholder="Wpisz nazwę lub e-mail użytkownika" type="text"/>
                     <div class="input-group-append">
                         <button type="submit" value="Search" class="btn btn-default">Szukaj</button>
                     </div>
