@@ -133,6 +133,7 @@ namespace Inzynierka.Controllers
             else
             {
                 _tripAdvertRepository.DeleteTripAdvertByUserId(user.Id);
+                await _signInManager.SignOutAsync();
                 var result = await _userManager.DeleteAsync(user);
 
                 if (result.Succeeded)
@@ -144,7 +145,7 @@ namespace Inzynierka.Controllers
                     ModelState.AddModelError("", error.Description);
                 }
             }
-            return View("NotFounUser");
+            return View("Index", "TripAdvert");
         }
 
         [HttpPost]

@@ -2,11 +2,10 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form  method="post">
-            <div class="row">
-                <h2>Edytuj swój profil.</h2>
-                <a asp-controller="UserProfile" asp-action="DeleteAccount">Usuń konto</a>
-            </div>
+        <form method="post">
+            
+                <h2>Edytuj swój profil</h2>
+                
             <hr />
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
@@ -39,7 +38,11 @@
                 <span asp-validation-for="Gender" class="text-danger"></span>
             </div>
             <button type="submit" class="btn btn-primary">Zapisz</button>
-            <a asp-action="Index" class="btn btn-danger">Anuluj</a>
+            <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
+            <div style="margin-top:15%">
+                <h4>Usuwanie konta</h4>
+                <a asp-controller="UserProfile" asp-action="DeleteAccount" class="btn btn-danger">Usuń konto</a>
+            </div>
         </form>
     </div>
 </div>
