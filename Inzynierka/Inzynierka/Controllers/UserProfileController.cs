@@ -47,7 +47,7 @@ namespace Inzynierka.Controllers
 
             return View(userProfileViewModel);
         }
-
+       
         public string SendEmail(string email, string Message)
         {
             try
@@ -83,12 +83,12 @@ namespace Inzynierka.Controllers
                 return e.Message;
             }
         }
-
+       
         public async Task<IActionResult> OtherUserProfile(String id)
         {
             var user = await _userManager.FindByEmailAsync(id);
+           
             var loggedInUser = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
-
             if (user == null)
             {
                 return View("NotfoundUser");
@@ -119,6 +119,32 @@ namespace Inzynierka.Controllers
                 About = user.About,
             };
             return View(model);
+        }
+
+        public async Task<IActionResult> DeleteAccount()
+        {
+            var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var user = await _userManager.FindByIdAsync(userId);
+
+            if (user == null)
+            {
+                return View("NotFoundUser");
+            }
+            else
+            {
+                _tripAdvertRepository.DeleteTripAdvertByUserId(user.Id);
+                var result = await _userManager.DeleteAsync(user);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "TripAdvert");
+                }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+            }
+            return View("NotFounUser");
         }
 
         [HttpPost]

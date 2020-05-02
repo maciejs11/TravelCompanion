@@ -3,7 +3,10 @@
 <div class="row">
     <div class="col-md-4">
         <form  method="post">
-            <h2>Edytuj swój profil.</h2>
+            <div class="row">
+                <h2>Edytuj swój profil.</h2>
+                <a asp-controller="UserProfile" asp-action="DeleteAccount">Usuń konto</a>
+            </div>
             <hr />
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
