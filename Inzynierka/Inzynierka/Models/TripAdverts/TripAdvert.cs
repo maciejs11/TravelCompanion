@@ -22,6 +22,7 @@ namespace Inzynierka.Models.TripAdverts
         public string Country { get; set; }
         public DateTime AdvertDate { get; set; } = DateTime.Now;
         public string UserEmail { get; set; }
+        public string UserFirstName { get; set; }
 
         public string UserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; } 

@@ -48,14 +48,14 @@ namespace Inzynierka.Controllers
             return View(userProfileViewModel);
         }
        
-        public string SendEmail(string email, string Message)
+        public async Task<string> SendEmail(string email, string Message)
         {
             try
             {
-                string userEmail = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
-                // Credentials
+                string userEmail = (await _userManager.GetUserAsync(HttpContext.User))?.Email;
+                      
                 var credentials = new NetworkCredential("travelcompanionn3@gmail.com", "iNzynI3rk@24");
-                // Mail message
+               
                 var mail = new MailMessage()
                 {
                     From = new MailAddress("travelcompanionn3@gmail.com"),
@@ -65,7 +65,7 @@ namespace Inzynierka.Controllers
                 };
                 mail.IsBodyHtml = false;
                 mail.To.Add(new MailAddress(email));
-                // Smtp client
+              
                 var client = new SmtpClient()
                 {
                     Port = 587,

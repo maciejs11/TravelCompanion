@@ -6,22 +6,29 @@
     <h2 style="margin-bottom:2%">@Model.PageTitle</h2>
     @foreach (var tripAdvert in Model.TripAdverts)
     {<div style="margin-bottom:4%">
-            <div class="card card-body backgroundGrayColor ">
-                <div style="margin-bottom:1%">
-                    <h4 class="d-inline font-weight-bold ">@tripAdvert.Title</h4>
-                    <p class="d-inline float-right font-weight-light">@tripAdvert.AdvertDate</p>
-                </div>
-                <div style="margin-bottom:1%">
-                    <h5 class=" d-inline font-weight-normal"> Kraj: @tripAdvert.Country</h5>                 
-                    @if (!String.IsNullOrEmpty(tripAdvert.UserEmail))
-                    {
-                        @Html.ActionLink(tripAdvert.UserEmail, "OtherUserProfile", "UserProfile", 
-                       new { id = tripAdvert.UserEmail },
-                       new { @class = "if-inline float-right font-weight-normal" })
-                    }                  
-                </div>
-                <p class=" font-weight-normal">@tripAdvert.Content</p>
-            </div>
+         <div class="body">
+             <div class="card-body backgroundGrayColor ">
+                 <div style="margin-bottom:2%">
+                     <h4 class="d-inline font-weight-bold ">@tripAdvert.Title</h4>
+                     <p class="d-inline float-right font-weight-light">@tripAdvert.AdvertDate</p>
+                 </div>
+                 <div style="margin-bottom:1%">
+                     <h5 class=" d-inline font-weight-normal"> Kraj: @tripAdvert.Country</h5>
+                     @if (!String.IsNullOrEmpty(tripAdvert.UserEmail))
+                     {
+                         @Html.ActionLink(tripAdvert.UserEmail, "OtherUserProfile", "UserProfile",
+                        new { id = tripAdvert.UserEmail },
+                        new { @class = "if-inline float-right font-weight-normal" })
+                     }
+
+                     @*<h5 class="if-inline float-right font-weight-normal">@tripAdvert.UserFirstName</h5>*@
+                 </div>
+                 <p class=" font-weight-normal">@tripAdvert.Content</p>
+             </div>
+             <div class="card-footer backgroundGrayColor">
+                 <a asp-controller="UserProfile" asp-action="OtherUserProfile" asp-route-id="@tripAdvert.UserEmail" class="btn btn-default">Zobacz profil lub napisz wiadomość</a>
+             </div>
+         </div>
         </div>
     }
 </div>

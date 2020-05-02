@@ -46,13 +46,14 @@ namespace Inzynierka.Controllers
 
         [HttpPost]
         [Authorize]
-        public IActionResult AddTripAdvert(TripAdvert tripAdvert)
+        public async Task<IActionResult> AddTripAdvert(TripAdvert tripAdvert)
         {
             if (ModelState.IsValid)
             {
                 tripAdvert.UserEmail = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
                 tripAdvert.UserId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-                
+                tripAdvert.UserFirstName = (await _userManager.GetUserAsync(HttpContext.User))?.FirstName;
+
                 _tripAdvertRepository.AddTripAdvert(tripAdvert);
                 return RedirectToAction("Index");
             }
