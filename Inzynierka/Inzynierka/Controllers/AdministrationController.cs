@@ -166,6 +166,33 @@ namespace Inzynierka.Controllers
           
             return View(model);
         }
+
+
+        public async Task<IActionResult> DeleteRole(string id)
+        {
+            var role = await _roleManager.FindByIdAsync(id);
+
+            if (role == null)
+            {
+                return View("NotFoundUser");
+            }
+            else
+            {
+
+                var result = await _roleManager.DeleteAsync(role);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("ListRoles");
+                }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+            }
+            return View("Listroles");
+        }
+
         [HttpGet]
         public async Task<IActionResult> EditUsersInRole(string roleId)
         {

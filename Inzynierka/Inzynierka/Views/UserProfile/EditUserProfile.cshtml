@@ -41,7 +41,8 @@
             <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
             <div style="margin-top:15%">
                 <h4>Usuwanie konta</h4>
-                <a asp-controller="UserProfile" asp-action="DeleteAccount" class="btn btn-danger">Usuń konto</a>
+                <a asp-controller="UserProfile" asp-action="DeleteAccount" class="btn btn-danger"
+                    onclick="return confirm('Czy na pewno chcesz usunąć konto?')">Usuń konto</a>
             </div>
         </form>
     </div>
