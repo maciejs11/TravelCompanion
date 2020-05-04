@@ -28,10 +28,20 @@
             <h4 class="d-inline">Płeć: </h4>
             <h4 class="d-inline font-weight-normal">@Model.UserProfiles.Gender</h4>
         </div>
-        <div style="padding:10px">
-            <h4 class="d-inline">O mnie: </h4>
-            <h5 class="d-inline font-weight-normal">@Model.UserProfiles.About</h5>
-        </div>
+        @if (Model.UserProfiles.About != null)
+        {
+            <div style="padding:10px">
+                <h4 class="d-inline">O mnie: </h4>
+                <h5 class="d-inline font-weight-normal">@Model.UserProfiles.About</h5>
+            </div>
+        }
+        else
+        {
+            <div style="padding:10px ; display:none">
+                <h4 class="d-inline">O mnie: </h4>
+                <h5 class="d-inline font-weight-normal">@Model.UserProfiles.About</h5>
+            </div>
+        }
     </div>
 
     <div class="col-md-4">

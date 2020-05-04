@@ -10,27 +10,41 @@
 
 </div>
 
-<div style="margin:auto">
-    <div class="col-md-6 card card-body backgroundGrayColor">
-        <div style="padding:10px">
-            <h4 class="d-inline">Imię i nazwisko: </h4>
-            <h4 class=" d-inline font-weight-normal">@Model.UserProfiles.FirstName @Model.UserProfiles.LastName</h4>
-        </div>
-        <div style="padding:10px">
-            <h4 class="d-inline">Wiek: </h4>
-            <h4 class="d-inline font-weight-normal">@Model.UserProfiles.Age</h4>
-        </div>
-        <div style="padding:10px">
-            <h4 class="d-inline">Płeć: </h4>
-            <h4 class="d-inline font-weight-normal">@Model.UserProfiles.Gender</h4>
-        </div>
-        <div style="padding:10px">
-            <h4 class="d-inline">O mnie: </h4>
-            <h5 class="d-inline font-weight-normal">@Model.UserProfiles.About</h5>
+
+    <div style="margin:auto; margin-bottom:1%">
+        <div class="col-md-6 card card-body backgroundGrayColor">
+            <div style="padding:10px">
+                <h4 class="d-inline">Imię i nazwisko: </h4>
+                <h4 class=" d-inline font-weight-normal">@Model.UserProfiles.FirstName @Model.UserProfiles.LastName</h4>
+            </div>
+            <div style="padding:10px">
+                <h4 class="d-inline">Wiek: </h4>
+                <h4 class="d-inline font-weight-normal">@Model.UserProfiles.Age</h4>
+            </div>
+            <div style="padding:10px">
+                <h4 class="d-inline">Płeć: </h4>
+                <h4 class="d-inline font-weight-normal">@Model.UserProfiles.Gender</h4>
+            </div>
+            @if (Model.UserProfiles.About != null)
+            {
+                <div style="padding:10px">
+                    <h4 class="d-inline">O mnie: </h4>
+                    <h5 class="d-inline font-weight-normal">@Model.UserProfiles.About</h5>
+                </div>
+            }
+            else
+            {
+                <div style="padding:10px">
+                    <h4 class="d-inline">O mnie: </h4>
+                    <h5 class="d-inline font-weight-normal">Nie uzupełniono, możesz uzupełnić w edycji profilu.</h5>
+                </div>
+            }
         </div>
     </div>
+     <p class="d-inline"><h6 class="d-inline">Informacja:</h6> Wiadomości od innych użytkowników będą przesyłane na Twój adres e-mail @Model.UserProfiles.Email.</p>
 
-</div>
+   
+
 
 <h4 style="padding-top:20px; margin-bottom:2%">Moje ogłoszenia</h4>
 
