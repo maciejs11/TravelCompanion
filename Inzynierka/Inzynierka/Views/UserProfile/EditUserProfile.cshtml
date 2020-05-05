@@ -3,9 +3,9 @@
 <div class="row">
     <div class="col-md-4">
         <form method="post">
-            
-                <h2>Edytuj swój profil</h2>
-                
+
+            <h2>Edytuj swój profil</h2>
+
             <hr />
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
@@ -39,11 +39,21 @@
             </div>
             <button type="submit" class="btn btn-primary">Zapisz</button>
             <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
-            <div style="margin-top:15%">
-                <h4>Usuwanie konta</h4>
-                <a asp-controller="UserProfile" asp-action="DeleteAccount" class="btn btn-danger"
-                    onclick="return confirm('Czy na pewno chcesz usunąć konto?')">Usuń konto</a>
-            </div>
         </form>
+        <div style="margin-top:15%">
+            <h4>Usuwanie konta</h4>
+            <form asp-controller="UserProfile" asp-action="DeleteAccount" method="post">
+                <span id="confirmDeleteSpan_@Model.Id" style="display:none">
+                    <span>Czy na pewno chcesz usunąć?</span>
+                    <button type="submit" class="btn btn-danger">Tak</button>
+                    <span class="btn btn-primary"
+                          onclick="confirmDelete('@Model.Id', false)">Nie</span>
+                </span>
+                <span id="deleteSpan_@Model.Id">
+                    <span class="btn btn-danger"
+                          onclick="confirmDelete('@Model.Id', true)">Usuń</span>
+                </span>
+            </form>
+        </div>
     </div>
 </div>

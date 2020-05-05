@@ -40,7 +40,16 @@
                      </div>
                      <div class="card-footer">
                          <form asp-action="DeleteTripAdvertAdmin" asp-route-id="@tripAdvert.TripAdvertID" method="post">
-                             <button type="submit" class="btn btn-danger">Usuń ogłoszenie</button>
+                             <span id="confirmDeleteSpan_@tripAdvert.TripAdvertID" style="display:none">
+                                 <span>Czy na pewno chcesz usunąć?</span>
+                                 <button type="submit" class="btn btn-danger">Tak</button>
+                                 <span class="btn btn-primary"
+                                       onclick="confirmDelete('@tripAdvert.TripAdvertID', false)">Nie</span>
+                             </span>
+                             <span id="deleteSpan_@tripAdvert.TripAdvertID">
+                                 <span class="btn btn-danger"
+                                       onclick="confirmDelete('@tripAdvert.TripAdvertID', true)">Usuń</span>
+                             </span>
                          </form>
 
                      </div>
