@@ -7,12 +7,30 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Hubs\**" />
+    <Compile Remove="Models\Chat\**" />
+    <Compile Remove="Views\Chat\**" />
+    <Content Remove="Hubs\**" />
+    <Content Remove="Models\Chat\**" />
+    <Content Remove="Views\Chat\**" />
+    <EmbeddedResource Remove="Hubs\**" />
+    <EmbeddedResource Remove="Models\Chat\**" />
+    <EmbeddedResource Remove="Views\Chat\**" />
+    <None Remove="Hubs\**" />
+    <None Remove="Models\Chat\**" />
+    <None Remove="Views\Chat\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Migrations\20190911162127_test.cs" />
     <Compile Remove="Migrations\20190911162127_test.Designer.cs" />
   </ItemGroup>
 
 
   <ItemGroup>
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.7.11" />
+    <PackageReference Include="Hangfire.Core" Version="1.7.11" />
+    <PackageReference Include="Hangfire.SqlServer" Version="1.7.11" />
     <PackageReference Include="MailKit" Version="2.6.0" />
     <PackageReference Include="Microsoft.AspNet.SignalR" Version="2.4.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
@@ -23,10 +41,7 @@
 
   <ItemGroup>
     <Folder Include="Data\TripAdvertData\" />
-    <Folder Include="Hubs\" />
-    <Folder Include="Models\Chat\" />
     <Folder Include="Views\Administration\Users\" />
-    <Folder Include="Views\Chat\" />
   </ItemGroup>
 
 

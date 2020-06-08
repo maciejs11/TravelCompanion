@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "7f3a254b6dd305f2cc82f770a6b696853bbb8112"
+    "signature": "96c4afee1e491850241bd1460532ea01edb6cbbe"
   },
   "compilationOptions": {
     "defines": [
@@ -24,6 +24,9 @@
     ".NETCoreApp,Version=v2.2": {
       "Inzynierka/1.0.0": {
         "dependencies": {
+          "Hangfire.AspNetCore": "1.7.11",
+          "Hangfire.Core": "1.7.11",
+          "Hangfire.SqlServer": "1.7.11",
           "MailKit": "2.6.0",
           "Microsoft.AspNet.SignalR": "2.4.1",
           "Microsoft.AspNetCore.App": "2.2.0",
@@ -36,6 +39,80 @@
         },
         "compile": {
           "Inzynierka.dll": {}
+        }
+      },
+      "Hangfire.AspNetCore/1.7.11": {
+        "dependencies": {
+          "Hangfire.Core": "1.7.11",
+          "Microsoft.AspNetCore.Antiforgery": "2.2.0",
+          "Microsoft.AspNetCore.Hosting.Abstractions": "2.2.0",
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.2.0",
+          "Microsoft.Extensions.Logging.Abstractions": "2.2.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Hangfire.AspNetCore.dll": {
+            "assemblyVersion": "1.7.11.0",
+            "fileVersion": "1.7.11.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Hangfire.AspNetCore.dll": {}
+        }
+      },
+      "Hangfire.Core/1.7.11": {
+        "dependencies": {
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Hangfire.Core.dll": {
+            "assemblyVersion": "1.7.11.0",
+            "fileVersion": "1.7.11.0"
+          }
+        },
+        "resources": {
+          "lib/netstandard2.0/es/Hangfire.Core.resources.dll": {
+            "locale": "es"
+          },
+          "lib/netstandard2.0/fa/Hangfire.Core.resources.dll": {
+            "locale": "fa"
+          },
+          "lib/netstandard2.0/nl/Hangfire.Core.resources.dll": {
+            "locale": "nl"
+          },
+          "lib/netstandard2.0/pt-BR/Hangfire.Core.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/netstandard2.0/pt-PT/Hangfire.Core.resources.dll": {
+            "locale": "pt-PT"
+          },
+          "lib/netstandard2.0/pt/Hangfire.Core.resources.dll": {
+            "locale": "pt"
+          },
+          "lib/netstandard2.0/zh-TW/Hangfire.Core.resources.dll": {
+            "locale": "zh-TW"
+          },
+          "lib/netstandard2.0/zh/Hangfire.Core.resources.dll": {
+            "locale": "zh"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Hangfire.Core.dll": {}
+        }
+      },
+      "Hangfire.SqlServer/1.7.11": {
+        "dependencies": {
+          "Hangfire.Core": "1.7.11",
+          "System.Data.SqlClient": "4.6.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Hangfire.SqlServer.dll": {
+            "assemblyVersion": "1.7.11.0",
+            "fileVersion": "1.7.11.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Hangfire.SqlServer.dll": {}
         }
       },
       "MailKit/2.6.0": {
@@ -3735,6 +3812,27 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Hangfire.AspNetCore/1.7.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Z3FM67pW4t+XrYN1Yyx72HxSuiXmm1GsBPdtpfbCXgyFXAsUTJn5MV+1FcUyPSl61E2QwJpaKEGl/vH0N/ThJw==",
+      "path": "hangfire.aspnetcore/1.7.11",
+      "hashPath": "hangfire.aspnetcore.1.7.11.nupkg.sha512"
+    },
+    "Hangfire.Core/1.7.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/v+INBYRJJzMt5CPi+qFRsikYjbwUweBwLKGPc9PnDjD1o8MhQ5Ggx2/EOhavkQRwFgBRk5y3jCiD1HKR/WBPw==",
+      "path": "hangfire.core/1.7.11",
+      "hashPath": "hangfire.core.1.7.11.nupkg.sha512"
+    },
+    "Hangfire.SqlServer/1.7.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JoW+UgVOwmB2ZNlt0+gt/FdHfzm79ZtjCFIKv9Zt3tO/aOJ6tHLLG8WTLevUi5PFy94NvPLEzsMvEd6dx0tTbQ==",
+      "path": "hangfire.sqlserver/1.7.11",
+      "hashPath": "hangfire.sqlserver.1.7.11.nupkg.sha512"
     },
     "MailKit/2.6.0": {
       "type": "package",
